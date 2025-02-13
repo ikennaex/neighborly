@@ -13,7 +13,7 @@ const Login = () => {
         <button className='bg-customBlue h-14 text-white text-xl rounded-lg' type="submit">Login</button>
       </form>
 
-      <p className='pt-7'>New to Awoof Buyer? <Link className='text-customPurple' to="/register">Register here</Link></p>
+      <p className='pt-7'>New to Awoof Buyer? <Link className='text-customBlue  font-bold' to="/register">Register here</Link></p>
         </div>
     </div>
   )
