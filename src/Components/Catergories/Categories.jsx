@@ -1,0 +1,47 @@
+import React from 'react'
+import { microwave } from '../../imports'
+
+const Categories = () => {
+    const items = [
+        {
+            text: "Phones and Tablets",
+            img: "https://img.freepik.com/free-vector/realistic-display-smartphone-with-different-apps_52683-30241.jpg?t=st=1739637307~exp=1739640907~hmac=875ad543d4cfbb85d57f396450245d0a3ed104ae8388b39565f9713a77dcfccf&w=740"
+        },
+        {
+            text: "Home appliances",
+            img: microwave
+        },
+        {
+            text: "Electronics",
+            img: "https://w7.pngwing.com/pngs/210/256/png-transparent-laptop-laptop-notebook-electronics-netbook-computer-thumbnail.png"
+        },
+        {
+            text: "Beauty",
+            img: "https://img.freepik.com/free-photo/top-view-various-makeup-texture_52683-109856.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost"
+        },
+        {
+            text: "Kids",
+            img: "https://img.freepik.com/free-photo/cute-fluffy-monkey-toys_23-2149642394.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost"
+        },
+    ]
+  return (
+    <div>
+      <div className='py-5'>
+        <p className='text-xl font-bold text-center mb-5 '>what are you looking for ?</p>
+
+        <div className='flex flex-wrap gap-3 justify-center'>
+            {items.map((item, index) => (
+                
+                <div className='w-1/4 h-full bg-customYellow p-3 ' key={index}>
+                    <img className='w-16' src={item.img} alt={item.text} />
+                    <a className='text-sm' href={item.link}>{item.text}</a>
+                </div>
+            
+            ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Categories
