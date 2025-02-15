@@ -11,12 +11,12 @@ const Register = () => {
   <input className='h-14 border p-3 bg-slate-200 rounded-lg' type="text" placeholder='Email or Phone Number'/>
   <input className='h-14 border p-3 bg-slate-200 rounded-lg' type="password" placeholder='Password' />
   <input className='h-14 border p-3 bg-slate-200 rounded-lg' type="password" placeholder='Confirm Password' />
-  <button className='bg-customBlue h-14 text-white text-xl rounded-lg' type="submit">Register</button>
-
   <div>
   <input type="checkbox" id="agree" name="agree"  />
 <label className='ml-2' for="agree">By creating your account, you agree to our Terms of Use and Privacy Policy</label>
   </div>
+  <button className='bg-customBlue h-14 text-white text-xl rounded-lg' type="submit">Register</button>
+
 
 </form>
 
