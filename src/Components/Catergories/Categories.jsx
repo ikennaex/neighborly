@@ -32,9 +32,9 @@ const Categories = () => {
         <div className='flex flex-wrap gap-3 justify-center'>
             {items.map((item, index) => (
                 
-                <div className='w-1/4 h-full bg-customYellow p-3 ' key={index}>
-                    <img className='w-16' src={item.img} alt={item.text} />
-                    <a className='text-sm' href={item.link}>{item.text}</a>
+                <div className='w-1/4 h-24 bg-stone-300 p-3 flex flex-col justify-between items-center ' key={index}>
+                    <img className='w-16 h-10' src={item.img} alt={item.text} />
+                    <p className='text-[0.7rem] leading-[0.8rem]' href={item.link}>{item.text}</p>
                 </div>
             
             ))}
