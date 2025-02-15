@@ -34,9 +34,8 @@ const Categories = () => {
                 
                 <div className='w-1/4 h-24 bg-stone-300 rounded-xl p-3 flex flex-col justify-between items-center ' key={index}>
                     <img className='w-16 h-10' src={item.img} alt={item.text} />
-                    <p className='text-[0.7rem] leading-[0.8rem]' href={item.link}>{item.text}</p>
+                    <p className='text-[0.7rem] leading-[0.8rem] text-center' href={item.link}>{item.text}</p>
                 </div>
-            
             ))}
         </div>
       </div>
