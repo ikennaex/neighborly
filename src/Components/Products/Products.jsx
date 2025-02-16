@@ -73,6 +73,9 @@ const Products = () => {
               </div>
             ))}
         </div>
+        <div className='flex justify-center mt-7'>
+        <button className='bg-customYellow rounded-md p-2 '>See more</button>
+        </div>
       </div>
     </div>
   )
