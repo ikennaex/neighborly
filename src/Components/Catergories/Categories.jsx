@@ -26,7 +26,7 @@ const Categories = () => {
     ]
   return (
     <div>
-      <div className='py-5'>
+      <div className='py-7'>
         <p className='text-xl font-bold text-center mb-5 '>what are you looking for ?</p>
 
         <div className='flex flex-wrap gap-3 justify-center'>

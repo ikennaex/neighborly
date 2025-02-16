@@ -58,15 +58,18 @@ const Products = () => {
     
   return (
     <div>
-      <div>
+      <div className='py-7'>
         <p className='text-xl font-bold text-center mb-5'>Products</p>
 
-        <div className='grid grid-cols-2 gap-4'>
+        <div className='grid grid-cols-2 gap-9'>
             {products.map((product, index) => (
-              <div key={index} className='flex flex-col justify-between items-center border-black border-2 py-2 rounded-xl'>
-                <img src= {product.img} alt="" />
-                <div>{product.name}</div>
-                <div>{product.price}</div>
+              <div key={index} className='flex flex-col justify-between items-center border-customGreen border-2 py-2 rounded-xl'>
+
+                <div className='object-cover'>
+                <img className='h-32' src= {product.img} alt="" />
+                </div>
+                <p>{product.name}</p>
+                <p>{product.price}</p>
               </div>
             ))}
         </div>
