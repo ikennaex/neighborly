@@ -26,7 +26,7 @@ const Allproducts = () => {
             <Link to = {`/products/${product.id}`} >
             <div
               key={product.id}
-              className="flex flex-col justify-between items-center border-customGreen border-2 py-2 rounded-xl"
+              className="flex flex-col justify-between items-center border-customGreen border-2 p-2 text-center rounded-xl"
             >
               <div className="object-cover">
                 <img className="h-32" src={product.img} alt="" />

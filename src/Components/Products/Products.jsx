@@ -52,7 +52,7 @@ export const products = [
     {
       id: "7",
         img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
-        name: "Product 1",
+        name: "Bang & Olufsen Speakers jjdjd djdj jdjd ",
         price: "$12.98",
         location: "Lekki, Lagos",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
@@ -95,7 +95,7 @@ const Products = () => {
         <div className='grid grid-cols-2 gap-1'>
             {products.map((product) => (
             <Link to = {`/products/${product.id}`} >
-              <div key={product.id} className='flex flex-col justify-between items-center border-customGreen border-2 py-2 rounded-xl'>
+              <div key={product.id} className='flex flex-col justify-between items-center border-customGreen border-2 bg-white p-2 text-center rounded-xl'>
 
                 <div className='object-cover'>
                 <img className='h-32' src= {product.img} alt="" />

@@ -6,7 +6,7 @@ import { FaWhatsapp, FaDollarSign } from "react-icons/fa";
 
 const ProductPage = () => {
     const { id } = useParams(); // 
-  const product = products.find((p) => p.id); 
+  const product = products.find((p) => p.id === (id)); 
 
   if (!product) {
     return <h2>Product Not Found</h2>; // 
