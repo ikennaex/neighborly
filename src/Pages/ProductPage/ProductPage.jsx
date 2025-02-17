@@ -47,7 +47,7 @@ const ProductPage = () => {
             Make Payment</button>
           </div>
 
-          <div className='mt-7 bg-slate-300 p-4 rounded-xl'>
+          <div className='mt-7 border-2 border-customGreen bg-white p-4 rounded-xl'>
             <p className='font-semibold'>Note:</p>
             <ul className='list-decimal px-6 '>
                 <li>Contact seller for availability before making payment</li>
