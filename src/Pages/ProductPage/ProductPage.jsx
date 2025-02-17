@@ -22,6 +22,7 @@ const ProductPage = () => {
           <div className='py-5'>
             <h1 className='text-xl font-semibold'>{product.name}</h1>
             <p className='font-semibold'>{product.price}</p>
+            <p className='text-sm'>{product.location}</p>
           </div>
 
           <div className='h-0.5 bg-black'>
@@ -32,8 +33,9 @@ const ProductPage = () => {
             <p>{product.desc}</p>
           </div>
 
-          <div>
+          <div className='flex gap-2 flex-col'>
             <button className='w-full h-12 rounded-xl text-white bg-customGreen'>Contact Seller</button>
+            <button className='w-full h-12 rounded-xl text-white bg-customBlue'>Make Payment</button>
           </div>
         </div>
       </div>
