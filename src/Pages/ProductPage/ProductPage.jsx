@@ -32,7 +32,7 @@ const ProductPage = () => {
             <p className='text-sm'>{product.location}</p>
           </div>
 
-          <div className='h-0.5 bg-black'>
+          <div className='h-0.5 bg-customGreen'>
 
           </div>
 
@@ -45,6 +45,14 @@ const ProductPage = () => {
             Contact Seller</button>
             <button className='w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3'> <FaDollarSign size={25} />
             Make Payment</button>
+          </div>
+
+          <div className='mt-7'>
+            <p className='font-semibold'>Note:</p>
+            <ul className='list-decimal px-6 '>
+                <li>Contact seller for availability before making payment</li>
+                <li>Meet the supplier in a safe, public place.</li>
+            </ul>
           </div>
         </div>
       </div>
