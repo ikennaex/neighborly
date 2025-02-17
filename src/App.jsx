@@ -5,6 +5,7 @@ import Navbar from './Components/Navbar/Navbar'
 import Register from './Pages/Registerpage/Register'
 import Homepage from './Pages/Homepage/Homepage'
 import Footer from './Components/Footer/Footer'
+import ProductPage from './Pages/ProductPage/ProductPage'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path = "/" element = {<Homepage />} />
         <Route path = "/login" element = {<Login />} />
         <Route path = "/register" element = {<Register />} />
+        <Route path = "/product/:id" element = {<ProductPage />} />
       </Routes>
       <Footer />
 
