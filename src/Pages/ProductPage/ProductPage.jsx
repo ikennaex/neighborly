@@ -1,6 +1,7 @@
 import React from 'react'
 import { products } from '../../Components/Products/Products'
 import { useParams } from 'react-router-dom'
+import { FaWhatsapp, FaDollarSign } from "react-icons/fa";
 
 
 const ProductPage = () => {
@@ -19,6 +20,12 @@ const ProductPage = () => {
             <img src={product.img} alt={product.name} />
           </div>
 
+          <div className='flex gap-2'>
+            <div className='h-16 w-20 bg-slate-400'></div>
+            <div className='h-16 w-20 bg-slate-400'></div>
+            <div className='h-16 w-20 bg-slate-400'></div>
+          </div>
+
           <div className='py-5'>
             <h1 className='text-xl font-semibold'>{product.name}</h1>
             <p className='font-semibold'>{product.price}</p>
@@ -34,8 +41,10 @@ const ProductPage = () => {
           </div>
 
           <div className='flex gap-2 flex-col'>
-            <button className='w-full h-12 rounded-xl text-white bg-customGreen'>Contact Seller</button>
-            <button className='w-full h-12 rounded-xl text-white bg-customBlue'>Make Payment</button>
+            <button className='w-full h-12 rounded-xl text-white bg-customGreen flex items-center justify-center gap-3'> <FaWhatsapp size={24} />
+            Contact Seller</button>
+            <button className='w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3'> <FaDollarSign size={25} />
+            Make Payment</button>
           </div>
         </div>
       </div>
