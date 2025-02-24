@@ -7,7 +7,7 @@ import Homepage from './Pages/Homepage/Homepage'
 import Footer from './Components/Footer/Footer'
 import Allproducts from './Pages/AllProducts/Allproducts'
 import ProductPage from './Pages/ProductPage/ProductPage'
-
+import VendorPage from './Pages/Vendorpage/Vendorpage'
 
 function App() {
 
@@ -20,6 +20,7 @@ function App() {
         <Route path = "/register" element = {<Register />} />
         <Route path = "/allproducts" element = {<Allproducts />} />
         <Route path = "/products/:id" element = {<ProductPage />} />
+        <Route path = "/vendor/:id" element = {<Vendorpage />} />
       </Routes>
       <Footer />
 
