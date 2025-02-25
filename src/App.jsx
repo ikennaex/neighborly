@@ -8,6 +8,7 @@ import Footer from './Components/Footer/Footer'
 import Allproducts from './Pages/AllProducts/Allproducts'
 import ProductPage from './Pages/ProductPage/ProductPage'
 import VendorProducts from './Pages/Vendorpage/VendorProducts'
+import BecomeAVendor from './Pages/Vendorpage/BecomeAVendor'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path = "/allproducts" element = {<Allproducts />} />
         <Route path = "/products/:id" element = {<ProductPage />} />
         <Route path = "/vendor/:id" element = {<VendorProducts />} />
+        <Route path = "/becomeavendor" element = {<BecomeAVendor />} />
       </Routes>
       <Footer />
 

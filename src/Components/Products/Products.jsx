@@ -2,85 +2,95 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 export const products = [
     {
-      id: "1",
-        img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
-        name: "Product 1",
-        price: "$12.98",
-        location: "Lekki, Lagos",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
-    },
-    {
-      id: "2",
-        img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
-        name: "Product 1",
-        price: "$12.98",
-        location: "Lekki, Lagos",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
-    },
-    {
-      id: "3",
-        img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
-        name: "Product 1",
-        price: "$12.98",
-        location: "Lekki, Lagos",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
-    },
-    {
-      id: "4",
-        img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
-        name: "Product 1",
-        price: "$12.98",
-        location: "Lekki, Lagos",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
-    },
-    {
-      id: "5",
-        img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
-        name: "Product 1",
-        price: "$12.98",
-        location: "Lekki, Lagos",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
-    },
-    {
-      id: "6",
-        img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
-        name: "Product 1",
-        price: "$12.98",
-        location: "Lekki, Lagos",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
-    },
-    {
-      id: "7",
-        img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
-        name: "Bang & Olufsen Speakers jjdjd djdj jdjd ",
-        price: "$12.98",
-        location: "Lekki, Lagos",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
-    },
-    {
-      id: "8",
-        img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
-        name: "Product 1",
-        price: "$12.98",
-        location: "Lekki, Lagos",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
-    },
-    {
-      id: "9",
-        img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
-        name: "Product 1",
-        price: "$12.98",
-        location: "Lekki, Lagos",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
-    },
-    {
-      id: "10",
-        img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
-        name: "Product 1",
-        price: "$12.98",
-        location: "Lekki, Lagos",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
-    },
+        id: "1",
+        vendor_id: '1',
+          img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
+          name: "Product 1",
+          price: "$12.98",
+          location: "Lekki, Lagos",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
+      },
+      {
+        id: "2",
+        vendor_id: '1',
+          img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
+          name: "Product 2",
+          price: "$12.98",
+          location: "Lekki, Lagos",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
+      },
+      {
+        id: "3",
+        vendor_id: '1',
+          img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
+          name: "Product 3",
+          price: "$12.98",
+          location: "Lekki, Lagos",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
+      },
+      {
+        id: "4",
+        vendor_id: '1',
+          img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
+          name: "Product 4",
+          price: "$12.98",
+          location: "Lekki, Lagos",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
+      },
+      {
+        id: "5",
+        vendor_id: '2',
+          img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
+          name: "Product 5",
+          price: "$12.98",
+          location: "Lekki, Lagos",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
+      },
+      {
+        id: "6",
+        vendor_id: '2',
+          img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
+          name: "Product 6",
+          price: "$12.98",
+          location: "Lekki, Lagos",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
+      },
+      {
+        id: "7",
+        vendor_id: '2',
+          img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
+          name: "Bang & Olufsen Speakers jjdjd djdj jdjd 7",
+          price: "$12.98",
+          location: "Lekki, Lagos",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
+      },
+      {
+        id: "8",
+        vendor_id: '3',
+          img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
+          name: "Product 8",
+          price: "$12.98",
+          location: "Lekki, Lagos",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
+      },
+      {
+        id: "9",
+        vendor_id: '3',
+          img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
+          name: "Product 9",
+          price: "$12.98",
+          location: "Lekki, Lagos",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
+      },
+      {
+        id: "10",
+        vendor_id: '3',
+          img: "https://img.freepik.com/premium-psd/squared-bluetooth-speaker-mockup-floating_1332-8215.jpg?ga=GA1.1.2145612538.1736353082&semt=ais_authors_boost",
+          name: "Product 10",
+          price: "$12.98",
+          location: "Lekki, Lagos",
+          desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae, aut ab vero quod temporibus ipsa praesentium natus vel ipsam?"
+      },
     
 
 ]
