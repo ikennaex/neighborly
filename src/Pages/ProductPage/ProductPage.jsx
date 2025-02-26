@@ -51,7 +51,7 @@ const ProductPage = () => {
               <Link to={`/vendor/${vendorId}`}>
                 <button className='w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3'> 
                   <FaStore size={25} />
-                  View Vendor Page
+                  View Vendor Products
                 </button>
               </Link>
             
