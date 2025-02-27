@@ -9,11 +9,13 @@ import Allproducts from './Pages/AllProducts/Allproducts'
 import ProductPage from './Pages/ProductPage/ProductPage'
 import VendorProducts from './Pages/Vendorpage/VendorProducts'
 import BecomeAVendor from './Pages/Vendorpage/BecomeAVendor'
+import ScrollToTop from './Components/ScrollToTop/ScrollToTop'
 
 function App() {
 
   return (
     <div>
+      <ScrollToTop/>
       <Navbar />
       <Routes>
         <Route path = "/" element = {<Homepage />} />
