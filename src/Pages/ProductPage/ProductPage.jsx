@@ -1,16 +1,17 @@
-import React from 'react'
-import { products } from '../../Components/Products/Products'
-import { useParams } from 'react-router-dom'
-import { FaWhatsapp, FaDollarSign } from "react-icons/fa";
-
+import React from 'react';
+import { products } from '../../Components/Products/Products';
+import { useParams, Link } from 'react-router-dom';
+import { FaWhatsapp, FaDollarSign, FaStore } from "react-icons/fa";
 
 const ProductPage = () => {
-    const { id } = useParams(); // 
-  const product = products.find((p) => p.id === (id)); 
+  const { id } = useParams(); 
+  const product = products.find((p) => p.id === id); 
 
   if (!product) {
-    return <h2>Product Not Found</h2>; // 
+    return <h2>Product Not Found</h2>; 
   }
+
+  const vendorId = product.vendor_id; 
 
   return (
     <div className="container mx-auto">
@@ -32,19 +33,28 @@ const ProductPage = () => {
             <p className='text-sm'>{product.location}</p>
           </div>
 
-          <div className='h-0.5 bg-customGreen'>
-
-          </div>
+          <div className='h-0.5 bg-customGreen'></div>
 
           <div className='py-5'>
             <p>{product.desc}</p>
           </div>
 
           <div className='flex gap-2 flex-col'>
-            <button className='w-full h-12 rounded-xl text-white bg-customGreen flex items-center justify-center gap-3'> <FaWhatsapp size={24} />
-            Contact Seller</button>
-            <button className='w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3'> <FaDollarSign size={25} />
-            Make Payment</button>
+            <button className='w-full h-12 rounded-xl text-white bg-customGreen flex items-center justify-center gap-3'> 
+              <FaWhatsapp size={24} />
+              Contact Seller
+            </button>
+            <button className='w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3'> 
+              <FaDollarSign size={25} />
+              Make Payment
+            </button>
+              <Link to={`/vendor/${vendorId}`}>
+                <button className='w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3'> 
+                  <FaStore size={25} />
+                  View Vendor Products
+                </button>
+              </Link>
+            
           </div>
 
           <div className='mt-7 border-2 border-customGreen bg-white p-4 rounded-xl'>
@@ -60,4 +70,4 @@ const ProductPage = () => {
   );
 }
 
-export default ProductPage
+export default ProductPage;

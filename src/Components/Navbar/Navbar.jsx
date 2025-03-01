@@ -26,6 +26,10 @@ const Navbar = () => {
         name: "Blog",
         link: "/blog"
       },
+      {
+        name: "Become vendor",
+        link: "/becomeavendor"
+      },
     ]
 
   const [open, setOpen] = useState(false)
