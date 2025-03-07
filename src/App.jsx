@@ -10,6 +10,7 @@ import ProductPage from './Pages/ProductPage/ProductPage'
 import VendorProducts from './Pages/Vendorpage/VendorProducts'
 import BecomeAVendor from './Pages/Vendorpage/BecomeAVendor'
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop'
+import EditProducts from './Pages/Vendorpage/EditProducts'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path = "/products/:id" element = {<ProductPage />} />
         <Route path = "/vendor/:id" element = {<VendorProducts />} />
         <Route path = "/becomeavendor" element = {<BecomeAVendor />} />
+        <Route path = "/editproduct/:id" element = {<EditProducts />} />
       </Routes>
       <Footer />
 

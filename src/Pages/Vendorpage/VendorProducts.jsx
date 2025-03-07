@@ -1,10 +1,13 @@
 import React from 'react'
 import { vendorproducts } from '../../Components/Vendor/Vendor';
+import { products } from '../../Components/Products/Products';
 import { useParams } from 'react-router-dom';
 import { FaWhatsapp, FaDollarSign } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const VendorProducts = () => {
     const { id } = useParams(); // Get vendor ID from URL
+    
 
     // Filter all products belonging to the vendor
     const vendorProducts = vendorproducts.filter((p) => p.vendor_id.toString() === id);
@@ -40,9 +43,11 @@ const VendorProducts = () => {
                                 <p className='text-gray-700'>{product.desc}</p>
     
                                 <div className='flex gap-2 flex-col mt-4'>
+                                <Link to={`/editproduct/${product.id}`}>
                                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                         Edit
                                     </button>
+                                </Link>
                                     <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                         Delete
                                     </button>
