@@ -42,9 +42,7 @@ const Navbar = () => {
     <div className='container mx-auto px-9 py-4 bg-white'>
         <div className='lg:py-0.5 flex items-center justify-between'>
         <Link to = "/" >
-        <p className='lg:h-15 lg:mr-60  text-xl font-bold' >
-            Awoof buyer
-        </p>
+        <img className="logo w-36 h-auto" src="/images/awoofbuyerlogo.png" alt="logo"></img>
         </Link>
 
         <div className='hidden gap-20 mx-auto lg:flex cursor-pointer'>
