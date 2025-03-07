@@ -11,6 +11,12 @@ import VendorProducts from './Pages/Vendorpage/VendorProducts'
 import BecomeAVendor from './Pages/Vendorpage/BecomeAVendor'
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop'
 import EditProducts from './Pages/Vendorpage/EditProducts'
+import AdminPage from './Pages/AdminPage/AdminPage'
+import NewProduct from './Pages/Vendorpage/NewProduct'
+import ManageUsers from './Pages/AdminPage/ManageUsers'
+import ManageVendors from './Pages/AdminPage/ManageVendors'
+import PendingPayments from './Pages/AdminPage/PendingPayments'
+
 
 function App() {
 
@@ -27,6 +33,13 @@ function App() {
         <Route path = "/vendor/:id" element = {<VendorProducts />} />
         <Route path = "/becomeavendor" element = {<BecomeAVendor />} />
         <Route path = "/editproduct/:id" element = {<EditProducts />} />
+        <Route path = "/newproduct" element = {<NewProduct />} />
+         {/* Admin Routes */}
+        <Route path = "/admin" element = {<AdminPage />} />
+        <Route path = "/admin/manage-users" element = {<ManageUsers />} />
+        <Route path = "/admin/manage-vendors" element = {<ManageVendors />} />
+        <Route path = "/admin/pending-payments" element = {<PendingPayments />} />
+
       </Routes>
       <Footer />
 
