@@ -10,7 +10,6 @@ import ProductPage from './Pages/ProductPage/ProductPage'
 import VendorProducts from './Pages/Vendorpage/VendorProducts'
 import BecomeAVendor from './Pages/Vendorpage/BecomeAVendor'
 import EditProducts from './Pages/Vendorpage/EditProducts'
-
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop'
 import axios from "axios";
 import { UserContextProvider } from './UserContext'
@@ -29,7 +28,7 @@ axios.defaults.withCredentials = true;
 function App() {
 
   return (
-    <div>
+    
       <UserContextProvider>
       <ScrollToTop/>
       <Navbar />
@@ -55,7 +54,7 @@ function App() {
       </Routes>
       <Footer />
       </UserContextProvider>
-      </div>
+      
 
   )
 }

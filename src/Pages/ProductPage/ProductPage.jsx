@@ -15,8 +15,10 @@ const ProductPage = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="px-3 pb-10">
-        <div>
+      <div className="px-7 pb-10">
+        <div className='flex gap-48'>
+
+          <div>
           <div className="flex items-center justify-center">
             <img src={product.img} alt={product.name} className="object-cover scale-55"/>
           </div>
@@ -26,7 +28,9 @@ const ProductPage = () => {
             <div className='h-16 w-20 bg-slate-400'></div>
             <div className='h-16 w-20 bg-slate-400'></div>
           </div>
+          </div>
 
+          <div>
           <div className='py-5'>
             <h1 className='text-xl font-semibold'>{product.name}</h1>
             <p className='font-semibold'>{product.price}</p>
@@ -61,6 +65,7 @@ const ProductPage = () => {
                 <li>Contact seller for availability before making payment</li>
                 <li>Meet the supplier in a safe, public place.</li>
             </ul>
+          </div>
           </div>
         </div>
       </div>

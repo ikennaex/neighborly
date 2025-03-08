@@ -24,7 +24,7 @@ const Register = () => {
   };
   return (
     <div className="container mx-auto">
-      <div className="p-7">
+      <div className="p-7 pt-16 lg:max-w-[40rem] h-lvh m-auto">
         <h2 className="text-2xl text-center  mb-7">Create a New Account</h2>
 
         <form

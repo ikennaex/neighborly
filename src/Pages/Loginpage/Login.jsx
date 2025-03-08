@@ -10,13 +10,15 @@ const Login = () => {
   const [redirect, setRedirect] = useState(false);
   const {setUser} = useContext(UserContext);
 
+
   const handleLogin = async (e) => {
     e.preventDefault()
 
     try {
       // this grabs user infomation sent as json from the backend 
-      const userInfo = await axios.post(`${baseUrl}login`, {email, password})
-      setUser(userInfo.data)
+      const {data} = await axios.post(`${baseUrl}login`, {email, password}, {withCredentials: true})
+      console.log("User logged in", data)
+      setUser(data)
       alert("Login successful")
 
       // when login is successful it redirects to the homepage
@@ -33,15 +35,17 @@ const Login = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="p-7">
+      <div className="p-7 pt-16 lg:max-w-[40rem] h-lvh m-auto">
+
         <h2 className="text-2xl text-center  mb-7">Login to Awoof Buyer</h2>
 
-        <form className="flex flex-col gap-5 " action="" onSubmit={handleLogin}>
+        <form className="flex flex-col gap-5" action="" onSubmit={handleLogin}>
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="h-14 border p-3 bg-slate-200 rounded-lg"
             type="text"
+            required
             placeholder="Email or Phone Number"
           />
           <input
@@ -49,6 +53,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="h-14 border p-3 bg-slate-200 rounded-lg"
             type="password"
+            required
             placeholder="Password"
           />
           <button
@@ -65,8 +70,9 @@ const Login = () => {
             Register here
           </Link>
         </p>
-      </div>
-    </div>
+
+        </div>
+      </div> 
   );
 };
 
