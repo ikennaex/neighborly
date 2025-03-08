@@ -109,7 +109,7 @@ const Products = ({ search }) => {
   <p className='text-xl font-bold text-center mb-5'>Products</p>
 
   {/* Responsive Grid Layout */}
-  <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+  <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
     {filteredProducts.map((product) => (
       <Link key={product.id} to={`/products/${product.id}`}>
         <div className='flex flex-col justify-between items-center bg-white p-4 text-center rounded-xl h-84 transition-shadow duration-300 hover:shadow-lg'>
