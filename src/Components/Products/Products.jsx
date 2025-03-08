@@ -95,16 +95,22 @@ export const products = [
 
 ]
 
-const Products = () => {
-    
+const Products = ({ search }) => {
+
+  const filteredProducts = products.filter(
+    (product) =>
+      product.name.toLowerCase().includes(search.toLowerCase()) ||
+      product.desc.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div>
       <div className='py-7'>
         <p className='text-xl font-bold text-center mb-5'>Products</p>
 
         <div className='grid grid-cols-2 gap-1'>
-            {products.map((product) => (
-            <Link to = {`/products/${product.id}`} >
+            {filteredProducts.map((product) => (
+            <Link key={product.id} to={`/products/${product.id}`}>
               <div key={product.id} className='flex flex-col justify-between items-center border-customGreen border-2 bg-white p-2 text-center rounded-xl'>
 
                 <div className='object-cover'>

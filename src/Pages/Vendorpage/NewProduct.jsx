@@ -95,7 +95,7 @@ const NewProduct = () => {
                 className="w-full border rounded-lg p-2 mt-1"
               >
                 <option value="Electronics">Electronics</option>
-                <option value="Fashion">Fashion</option>
+                <option value="Phones and Tablets">Phones and Tablets</option>
                 <option value="Home Appliances">Home Appliances</option>
                 <option value="Beauty">Beauty</option>
                 <option value="Kids">Kids</option>
