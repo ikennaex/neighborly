@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Loader from '../../Loader/Loader';
 export const products = [
     {
         id: "1",
@@ -109,6 +110,8 @@ const Products = ({ search }) => {
   <p className='text-xl font-bold text-center mb-5'>Products</p>
 
   {/* Responsive Grid Layout */}
+  {
+    products ? (
   <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
     {filteredProducts.map((product) => (
       <Link key={product.id} to={`/products/${product.id}`}>
@@ -126,6 +129,8 @@ const Products = ({ search }) => {
       </Link>
     ))}
   </div>
+    ) : <Loader />
+  }
 
   {/* See More Button */}
   <div className='flex justify-center mt-7'>
