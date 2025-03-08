@@ -10,11 +10,17 @@ import ProductPage from './Pages/ProductPage/ProductPage'
 import VendorProducts from './Pages/Vendorpage/VendorProducts'
 import BecomeAVendor from './Pages/Vendorpage/BecomeAVendor'
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop'
+import { UserContextProvider } from './UserContext'
+import axios from 'axios'
 
+// to send every axios request with credentials 
+
+axios.defaults.withCredentials = true;
 function App() {
 
   return (
     <div>
+      <UserContextProvider>
       <ScrollToTop/>
       <Navbar />
       <Routes>
@@ -27,8 +33,9 @@ function App() {
         <Route path = "/becomeavendor" element = {<BecomeAVendor />} />
       </Routes>
       <Footer />
+      </UserContextProvider>
+      </div>
 
-    </div>
   )
 }
 

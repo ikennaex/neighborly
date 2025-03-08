@@ -8,12 +8,19 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+
+    try {
+      await axios.post(`${baseUrl}register`, {
+        username, email, password
+      })
+      alert("Registration Successful, now you can Login!")
+    } catch (err) {
+      alert("Registration failed") 
+      console.log(err)
+    }
   
-    axios.post(`${baseUrl}register`, {
-      username, email, password
-    })
   };
   return (
     <div className="container mx-auto">
