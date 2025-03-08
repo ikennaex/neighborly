@@ -1,6 +1,7 @@
 import React from "react";
 import { products } from "../../Components/Products/Products";
 import { Link } from "react-router-dom";
+import Loader from "../../Loader/Loader";
 
 const Allproducts = () => {
   return (
@@ -21,22 +22,25 @@ const Allproducts = () => {
             </select>
           </div>
         </div>
+          {products? (
         <div className="grid grid-cols-2 gap-1">
-          {products.map((product) => (
-            <Link to = {`/products/${product.id}`} >
-            <div
-              key={product.id}
-              className="flex flex-col justify-between items-center border-customGreen border-2 p-2 text-center rounded-xl"
-            >
-              <div className="object-cover">
-                <img className="h-32" src={product.img} alt="" />
+            {products.map((product) => (
+              <Link to = {`/products/${product.id}`} >
+              <div
+                key={product.id}
+                className="flex flex-col justify-between items-center border-customGreen border-2 p-2 text-center rounded-xl"
+              >
+                <div className="object-cover">
+                  <img className="h-32" src={product.img} alt="" />
+                </div>
+                <p>{product.name}</p>
+                <p>{product.price}</p>
               </div>
-              <p>{product.name}</p>
-              <p>{product.price}</p>
-            </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+
         </div>
+          ): <Loader />}
       </div>
     </div>
   );
