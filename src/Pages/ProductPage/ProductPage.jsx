@@ -17,8 +17,8 @@ const ProductPage = () => {
     <div className="container mx-auto">
       <div className="px-3 pb-10">
         <div>
-          <div>
-            <img src={product.img} alt={product.name} />
+          <div className="flex items-center justify-center">
+            <img src={product.img} alt={product.name} className="object-cover scale-55"/>
           </div>
 
           <div className='flex gap-2'>
@@ -39,22 +39,20 @@ const ProductPage = () => {
             <p>{product.desc}</p>
           </div>
 
-          <div className='flex gap-2 flex-col'>
-            <button className='w-full h-12 rounded-xl text-white bg-customGreen flex items-center justify-center gap-3'> 
-              <FaWhatsapp size={24} />
-              Contact Seller
+          <div className="flex flex-col lg:flex-row gap-3 w-full">
+            <button className="w-full lg:flex-1 h-12 rounded-xl text-white bg-customGreen flex items-center justify-center gap-3">
+              <FaWhatsapp size={24} /> Contact Seller
             </button>
-            <button className='w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3'> 
-              <FaDollarSign size={25} />
-              Make Payment
-            </button>
-              <Link to={`/vendor/${vendorId}`}>
-                <button className='w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3'> 
-                  <FaStore size={25} />
-                  View Vendor Products
-                </button>
-              </Link>
             
+            <button className="w-full lg:flex-1 h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3">
+              <FaDollarSign size={25} /> Make Payment
+            </button>
+            
+            <Link to={`/vendor/${vendorId}`} className="w-full lg:flex-1">
+              <button className="w-full lg:flex-1 h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3">
+                <FaDollarSign size={25} /> View Vendor Page
+              </button>
+            </Link>
           </div>
 
           <div className='mt-7 border-2 border-customGreen bg-white p-4 rounded-xl'>

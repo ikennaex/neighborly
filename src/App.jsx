@@ -9,11 +9,10 @@ import Allproducts from './Pages/AllProducts/Allproducts'
 import ProductPage from './Pages/ProductPage/ProductPage'
 import VendorProducts from './Pages/Vendorpage/VendorProducts'
 import BecomeAVendor from './Pages/Vendorpage/BecomeAVendor'
+import EditProducts from './Pages/Vendorpage/EditProducts'
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop'
+import axios from "axios";
 import { UserContextProvider } from './UserContext'
-import axios from 'axios'
-
-// to send every axios request with credentials 
 
 axios.defaults.withCredentials = true;
 function App() {
@@ -31,6 +30,14 @@ function App() {
         <Route path = "/products/:id" element = {<ProductPage />} />
         <Route path = "/vendor/:id" element = {<VendorProducts />} />
         <Route path = "/becomeavendor" element = {<BecomeAVendor />} />
+        <Route path = "/editproduct/:id" element = {<EditProducts/>} />
+        <Route path = "/newproduct" element = {<NewProduct />} />
+         {/* Admin Routes */}
+        <Route path = "/admin" element = {<AdminPage />} />
+        <Route path = "/admin/manage-users" element = {<ManageUsers />} />
+        <Route path = "/admin/manage-vendors" element = {<ManageVendors />} />
+        <Route path = "/admin/pending-payments" element = {<PendingPayments />} />
+
       </Routes>
       <Footer />
       </UserContextProvider>
