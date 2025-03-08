@@ -16,6 +16,9 @@ import NewProduct from './Pages/Vendorpage/NewProduct'
 import ManageUsers from './Pages/AdminPage/ManageUsers'
 import ManageVendors from './Pages/AdminPage/ManageVendors'
 import PendingPayments from './Pages/AdminPage/PendingPayments'
+import AboutUsPage from './Pages/AboutUsPage/AboutUsPage'
+import WhyChooseUsPage from './Pages/WhyChooseUsPage/WhyChooseUsPage'
+import BlogPage from './Pages/Blog/BlogPage'
 
 
 function App() {
@@ -26,6 +29,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path = "/" element = {<Homepage />} />
+        <Route path = "/about-us" element = {<AboutUsPage />} />
+        <Route path = "/whychooseus" element = {<WhyChooseUsPage />} />
+        <Route path = "/blog" element = {<BlogPage />} />
         <Route path = "/login" element = {<Login />} />
         <Route path = "/register" element = {<Register />} />
         <Route path = "/allproducts" element = {<Allproducts />} />
