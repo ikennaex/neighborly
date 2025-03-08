@@ -10,9 +10,20 @@ import ProductPage from './Pages/ProductPage/ProductPage'
 import VendorProducts from './Pages/Vendorpage/VendorProducts'
 import BecomeAVendor from './Pages/Vendorpage/BecomeAVendor'
 import EditProducts from './Pages/Vendorpage/EditProducts'
+
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop'
 import axios from "axios";
 import { UserContextProvider } from './UserContext'
+
+import AdminPage from './Pages/AdminPage/AdminPage'
+import NewProduct from './Pages/Vendorpage/NewProduct'
+import ManageUsers from './Pages/AdminPage/ManageUsers'
+import ManageVendors from './Pages/AdminPage/ManageVendors'
+import PendingPayments from './Pages/AdminPage/PendingPayments'
+import AboutUsPage from './Pages/AboutUsPage/AboutUsPage'
+import WhyChooseUsPage from './Pages/WhyChooseUsPage/WhyChooseUsPage'
+import BlogPage from './Pages/Blog/BlogPage'
+
 
 axios.defaults.withCredentials = true;
 function App() {
@@ -24,6 +35,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path = "/" element = {<Homepage />} />
+        <Route path = "/about-us" element = {<AboutUsPage />} />
+        <Route path = "/whychooseus" element = {<WhyChooseUsPage />} />
+        <Route path = "/blog" element = {<BlogPage />} />
         <Route path = "/login" element = {<Login />} />
         <Route path = "/register" element = {<Register />} />
         <Route path = "/allproducts" element = {<Allproducts />} />
