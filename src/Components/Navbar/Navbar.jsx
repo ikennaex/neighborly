@@ -87,7 +87,7 @@ const Navbar = () => {
             {user && (
               <div className="bg-customBlue text-white rounded-lg px-5 py-2">
                 <Link to="/user:id">
-                  <p>Hello {user.username}</p>
+                  <p>Hi {user.username}</p>
                 </Link>
               </div>
             )}

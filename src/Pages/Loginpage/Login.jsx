@@ -17,7 +17,6 @@ const Login = () => {
     try {
       // this grabs user infomation sent as json from the backend 
       const {data} = await axios.post(`${baseUrl}login`, {email, password}, {withCredentials: true})
-      console.log("User logged in", data)
       setUser(data)
       alert("Login successful")
 

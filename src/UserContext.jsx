@@ -9,9 +9,7 @@ export function UserContextProvider({children}){
     const [user, setUser] = useState(null)
     useEffect(() => {
         if (!user) {
-            console.log("fetching user details")
                 axios.get(`${baseUrl}profile`).then((response) => {
-                    console.log("user data received,", response.data)
                     setUser(response.data)
                 }).catch ((err) => {
                     console.log(err)
