@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Loader from '../../Loader/Loader';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { baseUrl } from '../../baseUrl';
+
 export const products = [
     {
         id: "1",
@@ -98,10 +102,31 @@ export const products = [
 
 const Products = ({ search }) => {
 
-  const filteredProducts = products.filter(
-    (product) =>
-      product.name.toLowerCase().includes(search.toLowerCase()) ||
-      product.desc.toLowerCase().includes(search.toLowerCase())
+  const [fetchedProducts, setFetchedProducts] = useState([]);
+  const [error, setError] = useState(null);
+
+
+  // Fetch Products from API
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}allproducts`); // API endpoint
+        setFetchedProducts(response.data);
+      } catch (err) {
+        setError("Failed to fetch products");
+        console.log(err)
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (error) return <p className="text-red-500">{error}</p>;
+  console.log(products.img)
+
+  const filteredProducts = fetchedProducts?.filter((product) =>
+    product.name.toLowerCase().includes(search.toLowerCase()) ||
+    product.desc.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -119,7 +144,7 @@ const Products = ({ search }) => {
 
           {/* Product Image */}
           <div className='object-cover w-full'>
-            <img className='h-48 w-full object-cover rounded-lg' src={product.img} alt={product.name} />
+            <img className='h-48 w-full object-cover rounded-lg' src={product.imgUrl[0]} alt={product.name} />
           </div>
 
           {/* Product Details */}
