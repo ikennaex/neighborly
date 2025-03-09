@@ -16,7 +16,7 @@ const ProductPage = () => {
   return (
     <div className="container mx-auto">
       <div className="px-7 pb-10">
-        <div className='flex gap-48'>
+        <div className='lg:flex gap-48'>
 
           <div>
           <div className="flex items-center justify-center">

@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { baseUrl } from "../../baseUrl";
 
 
 const NewProduct = () => {
@@ -27,20 +29,35 @@ const NewProduct = () => {
       };
     
       // Handle Form Submission
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
     
         // Create Form Data to Send to Backend
         const formData = new FormData();
         formData.append("name", product.name);
         formData.append("desc", product.desc);
-        formData.append("price", product.price);
+        formData.append("price", product.price.toString().trim());  //force it to remain a number for DB
         formData.append("img", product.img);
         formData.append("category", product.category);
     
+    
         // Simulating API call
-        console.log("Submitting product:", product);
-        alert("Product Uploaded Successfully!");
+        // console.log("Submitting product:", product);
+        // alert("Product Uploaded Successfully!");
+
+        // api call to upload product
+        try {
+          const productUpload = await axios.post(`${baseUrl}newproduct`, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
+          console.log(productUpload)
+          alert("Product Uploaded Successfully!");
+        } catch (err) {
+          console.log(err)
+          alert("Failed to upload product");
+        }
       };
     
       return (
