@@ -40,6 +40,7 @@ const NewProduct = () => {
     formData.append("img", product.img);
     formData.append("category", product.category);
     formData.append("location", product.location);
+    
 
     // api call to upload product
     try {
