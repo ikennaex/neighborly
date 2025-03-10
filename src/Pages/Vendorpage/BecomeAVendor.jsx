@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
+import { UserContext } from '../../UserContext';
+
 
 const BecomeAVendor = () => {
+  const {user}  = useContext(UserContext)
+
   const [formData, setFormData] = useState({
-    fullName: "",
+    userInfo : user, // this gets the user info from the context so we can get the user id in the bakckend 
     businessName: "",
     phoneNumber: "",
     address: "",
-    businessType: "",
     storeDescription: "",
   });
 
@@ -22,11 +25,9 @@ const BecomeAVendor = () => {
   // Validate form
   const validateForm = () => {
     let newErrors = {};
-    if (!formData.fullName.trim()) newErrors.fullName = "Full Name is required";
     if (!formData.businessName.trim()) newErrors.businessName = "Business Name is required";
     if (!formData.phoneNumber.trim()) newErrors.phoneNumber = "Phone Number is required";
     if (!formData.address.trim()) newErrors.address = "Address is required";
-    if (!formData.businessType) newErrors.businessType = "Please select a Business Type";
     if (!formData.storeDescription.trim()) newErrors.storeDescription = "Store Description is required";
 
     setErrors(newErrors);
@@ -34,8 +35,9 @@ const BecomeAVendor = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (validateForm()) {
       console.log("Form Submitted:", formData);
       alert("Vendor Registered Successfully!");
@@ -46,17 +48,6 @@ const BecomeAVendor = () => {
     <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-4">Vendor Registration</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        
-        {/* Full Name */}
-        <div>
-          <label className="block font-medium">Full Name:</label>
-          <input 
-            type="text" name="fullName" value={formData.fullName} onChange={handleChange}
-            className="w-full p-2 border rounded"
-            placeholder="Enter your full name"
-          />
-          {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
-        </div>
 
         {/* Business Name */}
         <div>
@@ -91,7 +82,7 @@ const BecomeAVendor = () => {
           {errors.address && <p className="text-red-500 text-sm">{errors.address}</p>}
         </div>
 
-        {/* Business Type */}
+        {/* Business Type
         <div>
           <label className="block font-medium">Business Type:</label>
           <select name="businessType" value={formData.businessType} onChange={handleChange} className="w-full p-2 border rounded">
@@ -101,7 +92,7 @@ const BecomeAVendor = () => {
             <option value="Digital Products">Digital Products</option>
           </select>
           {errors.businessType && <p className="text-red-500 text-sm">{errors.businessType}</p>}
-        </div>
+        </div> */}
 
         {/* Store Description */}
         <div>
