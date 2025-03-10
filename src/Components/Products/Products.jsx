@@ -154,6 +154,7 @@ const Products = ({ search }) => {
                   {/* Product Details */}
                   <p className="font-semibold mt-2">{product.name}</p>
                   <p className="text-gray-600">₦{product.price}</p>
+                  <p className="text-gray-600">{product.location}</p>
                 </div>
               </Link>
             </div>
