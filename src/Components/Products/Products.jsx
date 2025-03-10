@@ -112,6 +112,7 @@ const Products = ({ search }) => {
       try {
         const response = await axios.get(`${baseUrl}allproducts`); // API endpoint
         setFetchedProducts(response.data);
+        console.log(response.data)
       } catch (err) {
         setError("Failed to fetch products");
         console.log(err)
@@ -121,8 +122,11 @@ const Products = ({ search }) => {
     fetchProducts();
   }, []);
 
-  if (error) return <p className="text-red-500">{error}</p>;
-  console.log(products.img)
+  // if (error) {
+
+  //   console.log(error)
+  // }
+    // return <p className="text-red-500">{error}</p>;
 
   const filteredProducts = fetchedProducts?.filter((product) =>
     product.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -135,16 +139,17 @@ const Products = ({ search }) => {
   <p className='text-xl font-bold text-center mb-5'>Products</p>
 
   {/* Responsive Grid Layout */}
+
   {
-    products ? (
+    filteredProducts ? (
   <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-    {filteredProducts.map((product) => (
-      <Link key={product.id} to={`/products/${product.id}`}>
+    {filteredProducts.map((product)  => (
+      <Link key={product.id} to={`/products/${product._id}`}>
         <div className='flex flex-col justify-between items-center bg-white p-4 text-center rounded-xl h-84 transition-shadow duration-300 hover:shadow-lg'>
 
           {/* Product Image */}
           <div className='object-cover w-full'>
-            <img className='h-48 w-full object-cover rounded-lg' src={product.imgUrl[0]} alt={product.name} />
+            <img className='h-48 w-full object-cover rounded-lg' src={`${baseUrl}${product.imgUrl}`} alt={product.name} />
           </div>
 
           {/* Product Details */}
