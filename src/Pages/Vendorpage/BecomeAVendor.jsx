@@ -1,13 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { UserContext } from '../../UserContext';
-
+import axios from 'axios';
+import { baseUrl } from '../../baseUrl';
 
 const BecomeAVendor = () => {
-  const {user}  = useContext(UserContext)
 
   const [formData, setFormData] = useState({
-    userInfo : user, // this gets the user info from the context so we can get the user id in the bakckend 
     businessName: "",
     phoneNumber: "",
     address: "",
@@ -38,9 +36,17 @@ const BecomeAVendor = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // using cookies to send user info 
+
     if (validateForm()) {
-      console.log("Form Submitted:", formData);
-      alert("Vendor Registered Successfully!");
+      try {
+        await axios.put(`${baseUrl}becomeavendor`, formData)
+        setFormData({ businessName: "", phoneNumber: "", address: "", storeDescription: "" });
+        alert("Vendor Registered Successfully!");
+      } catch (err) {
+        console.log(err)
+        alert("Failed to register as a vendor", err);
+      }
     }
   };
 

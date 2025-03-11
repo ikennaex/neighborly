@@ -13,6 +13,7 @@ import EditProducts from './Pages/Vendorpage/EditProducts'
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop'
 import axios from "axios";
 import { UserContextProvider } from './UserContext'
+import ProtectedRoutes from './ProtectedRoutes'
 
 import AdminPage from './Pages/AdminPage/AdminPage'
 import NewProduct from './Pages/Vendorpage/NewProduct'
@@ -33,12 +34,15 @@ function App() {
       <ScrollToTop/>
       <Navbar />
       <Routes>
-        <Route path = "/" element = {<Homepage />} />
         <Route path = "/about-us" element = {<AboutUsPage />} />
         <Route path = "/whychooseus" element = {<WhyChooseUsPage />} />
         <Route path = "/blog" element = {<BlogPage />} />
         <Route path = "/login" element = {<Login />} />
         <Route path = "/register" element = {<Register />} />
+
+        {/* Protected routes  */}
+        <Route element = {<ProtectedRoutes />} >        
+        <Route path = "/" element = {<Homepage />} />
         <Route path = "/allproducts" element = {<Allproducts />} />
         <Route path = "/products/:id" element = {<ProductPage />} />
         <Route path = "/vendor/:id" element = {<VendorProducts />} />
@@ -51,6 +55,7 @@ function App() {
         <Route path = "/admin/manage-vendors" element = {<ManageVendors />} />
         <Route path = "/admin/pending-payments" element = {<PendingPayments />} />
 
+        </Route>
       </Routes>
       <Footer />
       </UserContextProvider>

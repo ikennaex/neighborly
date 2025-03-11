@@ -40,7 +40,6 @@ const NewProduct = () => {
     formData.append("img", product.img);
     formData.append("category", product.category);
     formData.append("location", product.location);
-    
 
     // api call to upload product
     try {
@@ -49,8 +48,17 @@ const NewProduct = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(productUpload);
       alert("Product Uploaded Successfully!");
+      setProduct({
+        name: "",
+        desc: "",
+        price: "",
+        img: null,
+        category: "",
+        location: "",
+      });
+
+      // navigate to vendor page
     } catch (err) {
       console.log(err);
       alert("Failed to upload product");
