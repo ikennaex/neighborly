@@ -24,7 +24,7 @@ export function UserContextProvider({children}){
     }, []); // Empty dependency array for useEffct to run on mount
   
     if (loading) {
-      return <div>Loading...</div>; // to render loading state while fetching user
+      return <div>fetching user</div>; // to render loading state while fetching user
     }
     return (
         <UserContext.Provider value= {{user, setUser}} >
