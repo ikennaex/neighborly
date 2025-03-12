@@ -55,7 +55,7 @@ const Navbar = () => {
           {user && (
             <div className="bg-customBlue text-white rounded-lg px-5 py-2">
               <Link to="/user:id">
-                <p>Hi {user.firstName}</p>
+                <p>Hi {user ? user.firstName : "no info"}</p>
               </Link>
             </div>
           )}
@@ -87,7 +87,7 @@ const Navbar = () => {
             {user && (
               <div className="bg-customBlue text-white rounded-lg px-5 py-2">
                 <Link to="/user:id">
-                  <p>Hi {user.firstName}</p>
+                  <p>Hi {user ? user.firstName : "no info"}</p>
                 </Link>
               </div>
             )}
