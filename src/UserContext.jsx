@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { createContext } from "react"
 import { baseUrl } from "./baseUrl"
+import Loader from "./Loader/Loader"
 
 export const UserContext = createContext({}) 
 
@@ -24,7 +25,11 @@ export function UserContextProvider({children}){
     }, []); // Empty dependency array for useEffct to run on mount
   
     if (loading) {
-      return <div>fetching user</div>; // to render loading state while fetching user
+      return (
+      <div className="flex justify-center items-center h-lvh">
+         <Loader/> {/* // to render loading state while fetching user */}
+      </div>
+      )
     }
     return (
         <UserContext.Provider value= {{user, setUser}} >

@@ -36,7 +36,7 @@ const BecomeAVendor = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // using cookies to send user info 
+    // using cookies to send user info on every request
 
     if (validateForm()) {
       try {

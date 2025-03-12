@@ -1,30 +1,45 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { baseUrl } from "../../baseUrl";
+import Loader from "../../Loader/Loader";
 
 const Register = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
     try {
       await axios.post(`${baseUrl}register`, {
-        username, email, password
+        username, email, password, firstName, lastName
       })
       alert("Registration Successful, now you can Login!")
+      setRedirect(true);
     } catch (err) {
       alert("Registration failed") 
       console.log(err)
     }
   
   };
+
+  if (redirect) {
+    return (
+    <>
+    <Loader />
+    <Navigate to = {"/login"} />
+    </>
+    )
+  }
+  
   return (
     <div className="container mx-auto">
-      <div className="p-7 pt-16 lg:max-w-[40rem] h-lvh m-auto">
+      <div className="p-7 pt-16 lg:max-w-[40rem] m-auto">
         <h2 className="text-2xl text-center  mb-7">Create a New Account</h2>
 
         <form
@@ -32,20 +47,39 @@ const Register = () => {
           action=""
           onSubmit={handleRegister}
         >
+          <label htmlFor="">First Name:</label>
+          <input
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className="h-14 border p-3 bg-slate-200 rounded-lg"
+            type="text"
+            placeholder="Enter First Name"
+          />
+          <label htmlFor="">Last Name:</label>
+          <input
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="h-14 border p-3 bg-slate-200 rounded-lg"
+            type="text"
+            placeholder="Enter Last Name"
+          />
+          <label htmlFor="">Set Username</label>
           <input
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             className="h-14 border p-3 bg-slate-200 rounded-lg"
             type="text"
-            placeholder="Enter username"
+            placeholder="Set Username"
           />
+          <label htmlFor="">Email Address</label>
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="h-14 border p-3 bg-slate-200 rounded-lg"
             type="text"
-            placeholder="Email or Phone Number"
+            placeholder="Email"
           />
+          <label htmlFor="">Set Passsword</label>
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
