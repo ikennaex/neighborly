@@ -55,7 +55,14 @@ const Navbar = () => {
           {user && (
             <div className="bg-customBlue text-white rounded-lg px-5 py-2">
               <Link to="/user:id">
-                <p>Hi {user ? user.firstName : "no info"} {user.role === "user" ? "User" : "Vendor"}</p>
+              <div className="flex justify-between gap-3">
+                    <p>
+                    Hi {user ? user.firstName : "no info"} 
+                    </p>
+                    <p className="bg-customYellow px-2 rounded-md">
+                    {user ?  (user.role === "user" ? "User" : "Vendor"): "no info"}
+                    </p>
+                    </div>
                 
               </Link>
             </div>
@@ -88,7 +95,14 @@ const Navbar = () => {
             {user && (
               <div className="bg-customBlue text-white rounded-lg px-5 py-2">
                 <Link to="/user:id">
-                  <p>Hi {user ? user.firstName : "no info"} {user.role === "user" ? "User" : "Vendor"}</p>
+                  <div className="flex justify-between">
+                    <p>
+                    Hi {user ? user.firstName : "no info"} 
+                    </p>
+                    <p className="bg-customYellow px-2 rounded-md">
+                    {user ?  (user.role === "user" ? "User" : "Vendor"): "no info"}
+                    </p>
+                    </div>
                   
                 </Link>
               </div>

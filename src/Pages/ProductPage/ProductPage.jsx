@@ -4,12 +4,14 @@ import { FaWhatsapp, FaDollarSign, FaStore } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { baseUrl } from '../../baseUrl';
+import Loader from '../../Loader/Loader';
 
 
 const ProductPage = () => {
   const { id } = useParams(); 
-  const [fetchedProduct, setFetchedProduct] = useState(null);
+  const [fetchedProduct, setFetchedProduct] = useState({});
   const [error, setError] = useState(null); 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -20,6 +22,8 @@ const ProductPage = () => {
       } catch (err) {
         setError("Failed to fetch products");
         console.log(err);
+      } finally {
+        setLoading(false)
       }
     };
 
@@ -27,6 +31,14 @@ const ProductPage = () => {
       fetchProducts();
     }
   }, [id]);
+
+  if (loading) {
+    <Loader />
+  }
+
+  if (error) {
+    return <h2>{error}</h2>;
+  }
 
   if (!fetchedProduct) {
     return <h2>Product Not Found</h2>; 
