@@ -70,7 +70,7 @@ const VendorProducts = ({ user }) => { // Pass the logged-in user as a prop
                                 <p className='text-gray-700'>{product.desc}</p>
 
                                 <div className="flex gap-2 flex-col mt-4">
-                                    {user?.vendor_id && user.vendor_id === product.vendor && (
+                                    {user?.vendor && user.vendor === product.vendor && (
                                         <>
                                             <Link to={`/editproduct/${product.id}`}>
                                                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
