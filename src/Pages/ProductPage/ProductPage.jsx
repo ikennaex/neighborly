@@ -46,7 +46,7 @@ const ProductPage = () => {
     <div className="container mx-auto px-5 lg:px-20 py-10">
       {/* Image Section */}
       <div className="flex flex-col items-center gap-4">
-        <img src={fetchedProduct.img} alt={fetchedProduct.name} className="w-full max-w-2xl object-cover rounded-lg shadow-lg" />
+        <img src={`${baseUrl}${fetchedProduct.imgUrl[0]}`} alt={fetchedProduct.name} className="w-full max-w-2xl object-cover rounded-lg shadow-lg" />
         <div className='flex gap-2'>
           <div className='h-16 w-20 bg-slate-400 rounded-md'></div>
           <div className='h-16 w-20 bg-slate-400 rounded-md'></div>
