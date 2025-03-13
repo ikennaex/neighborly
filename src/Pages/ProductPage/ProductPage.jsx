@@ -1,17 +1,38 @@
 import React from 'react';
-import { products } from '../../Components/Products/Products';
 import { useParams, Link } from 'react-router-dom';
 import { FaWhatsapp, FaDollarSign, FaStore } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import { baseUrl } from '../../baseUrl';
+
 
 const ProductPage = () => {
   const { id } = useParams(); 
-  const product = products.find((p) => p.id === id); 
+  const [fetchedProduct, setFetchedProduct] = useState(null);
+  const [error, setError] = useState(null); 
 
-  if (!product) {
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}product/${id}`); // API endpoint
+        setFetchedProduct(response.data);
+        console.log(response.data);
+      } catch (err) {
+        setError("Failed to fetch products");
+        console.log(err);
+      }
+    };
+
+    if (id) {
+      fetchProducts();
+    }
+  }, [id]);
+
+  if (!fetchedProduct) {
     return <h2>Product Not Found</h2>; 
   }
 
-  const vendorId = product.vendor_id; 
+  const vendorId = fetchedProduct._id; 
 
   return (
     <div className="container mx-auto">
@@ -20,7 +41,7 @@ const ProductPage = () => {
 
           <div>
           <div className="flex items-center justify-center">
-            <img src={product.img} alt={product.name} className="object-cover scale-55"/>
+            <img src={fetchedProduct.img} alt={fetchedProduct.name} className="object-cover scale-55"/>
           </div>
 
           <div className='flex gap-2'>
@@ -32,15 +53,15 @@ const ProductPage = () => {
 
           <div>
           <div className='py-5'>
-            <h1 className='text-xl font-semibold'>{product.name}</h1>
-            <p className='font-semibold'>{product.price}</p>
-            <p className='text-sm'>{product.location}</p>
+            <h1 className='text-xl font-semibold'>{fetchedProduct.name}</h1>
+            <p className='font-semibold'>{fetchedProduct.price}</p>
+            <p className='text-sm'>{fetchedProduct.location}</p>
           </div>
 
           <div className='h-0.5 bg-customGreen'></div>
 
           <div className='py-5'>
-            <p>{product.desc}</p>
+            <p>{fetchedProduct.desc}</p>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-3 w-full">
