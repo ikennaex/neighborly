@@ -1,9 +1,30 @@
 import React from "react";
-import { products } from "../../Components/Products/Products";
 import { Link } from "react-router-dom";
 import Loader from "../../Loader/Loader";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { baseUrl } from "../../baseUrl";
 
 const Allproducts = () => {
+
+  const [fetchedProducts, setFetchedProducts] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+      const fetchProducts = async () => {
+        try {
+          const response = await axios.get(`${baseUrl}allproducts`); // API endpoint
+          setFetchedProducts(response.data);
+          console.log(response.data);
+        } catch (err) {
+          setError("Failed to fetch products");
+          console.log(err);
+        }
+      };
+  
+      fetchProducts();
+    }, []);
+
   return (
     <div className="container mx-auto">
       <div className="py-7 px-3">
@@ -22,10 +43,10 @@ const Allproducts = () => {
             </select>
           </div>
         </div>
-          {products? (
+          {fetchedProducts? (
         <div className="grid grid-cols-2 gap-1">
-            {products.map((product) => (
-              <Link to = {`/products/${product.id}`} >
+            {fetchedProducts.map((product) => (
+              <Link to = {`/products/${product._id}`} >
               <div
                 key={product.id}
                 className="flex flex-col justify-between items-center border-customGreen border-2 p-2 text-center rounded-xl"

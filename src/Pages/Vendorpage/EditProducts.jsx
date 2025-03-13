@@ -1,25 +1,46 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { products } from "../../Components/Products/Products"; // Import the products array
 
 const EditProducts = () => {
   const { id } = useParams(); // Get product ID from URL
   const navigate = useNavigate();
 
+  const [fetchedProducts, setFetchedProducts] = useState([]);
+  const [error, setError] = useState(null); 
+  
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}products/${id}`); // API endpoint
+        setFetchedProducts(response.data);
+        console.log(response.data);
+      } catch (err) {
+        setError("Failed to fetch products");
+        console.log(err);
+      }
+    };
+
+    if (id) {
+      fetchProducts();
+    }
+  }, [id]);
+
+  if (!fetchedProducts) {
+    return <h2>Product Not Found</h2>; 
+  }
+  
+
   // Find the product by ID
-  const product = products.find((p) => p.id === id);
 
   // State to hold the edited product details
   const [formData, setFormData] = useState({
-    name: product?.name || "",
-    price: product?.price || "",
-    location: product?.location || "",
-    desc: product?.desc || "",
+    name: fetchedProducts?.name || "",
+    price: fetchedProducts?.price || "",
+    location: fetchedProducts?.location || "",
+    desc: fetchedProducts?.desc || "",
   });
 
-  if (!product) {
-    return <h2>Product Not Found</h2>;
-  }
+ 
 
   // Handle input changes
   const handleChange = (e) => {
@@ -31,10 +52,10 @@ const EditProducts = () => {
     e.preventDefault();
 
     // Update product data (mock update, replace with API call if needed)
-    product.name = formData.name;
-    product.price = formData.price;
-    product.location = formData.location;
-    product.desc = formData.desc;
+    fetchedProducts.name = formData.name;
+    fetchedProducts.price = formData.price;
+    fetchedProducts.location = formData.location;
+    fetchedProducts.desc = formData.desc;
 
     alert("Product updated successfully!");
     navigate(`/product/${id}`); // Redirect back to product page
