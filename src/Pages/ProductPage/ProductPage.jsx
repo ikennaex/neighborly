@@ -29,7 +29,7 @@ const ProductPage = () => {
     }
   }, [id]);
 
-  
+
   useEffect(() => {
     console.log("Updated Product:", fetchedProduct);
     console.log("Vendor:", fetchedProduct.vendor);
@@ -44,7 +44,9 @@ const ProductPage = () => {
 
   return (
     <div className="container mx-auto px-5 lg:px-20 py-10">
-      {/* Image Section */}
+
+      {/* Product Details */}
+      <div className="mt-8 p-6 bg-white shadow-lg rounded-lg w-full flex items-center gap-4">
       <div className="flex flex-col items-center gap-4">
         <img src={`${baseUrl}${fetchedProduct.imgUrl[0]}`} alt={fetchedProduct.name} className="w-full max-w-2xl object-cover rounded-lg shadow-lg" />
         <div className='flex gap-2'>
@@ -53,14 +55,13 @@ const ProductPage = () => {
           <div className='h-16 w-20 bg-slate-400 rounded-md'></div>
         </div>
       </div>
-
-      {/* Product Details */}
-      <div className="mt-8 p-6 bg-white shadow-lg rounded-lg w-full">
-        <h1 className="text-2xl font-bold">{fetchedProduct.name}</h1>
-        <p className="text-lg font-semibold text-gray-700">₦{fetchedProduct.price}</p>
-        <p className="text-sm text-gray-500">{fetchedProduct.location}</p>
-        <div className="h-0.5 bg-customGreen my-4"></div>
-        <p className="text-gray-700">{fetchedProduct.desc}</p>
+        <div>
+          <h1 className="text-2xl font-bold">{fetchedProduct.name}</h1>
+          <p className="text-lg font-semibold text-gray-700">₦{fetchedProduct.price}</p>
+          <p className="text-sm text-gray-500">{fetchedProduct.location}</p>
+          <div className="h-0.5 bg-customGreen my-4"></div>
+          <p className="text-gray-700">{fetchedProduct.desc}</p>
+        </div>
       </div>
 
       {/* Action Buttons */}
