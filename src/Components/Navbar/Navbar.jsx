@@ -18,11 +18,10 @@ const Navbar = () => {
       name: "About Us",
       link: "/about-us",
     },
-
     {
-      name: user.role != "vendor" && user.role != "admin" ? "Become vendor" : "",
+      name: user && user.role !== "vendor" && user.role !== "admin" ? "Become vendor" : "",
       link: "/becomeavendor",
-    },
+    }
   ];
   
   const [open, setOpen] = useState(false);

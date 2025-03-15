@@ -10,23 +10,19 @@ export function UserContextProvider({children}){
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true); // Optional: track loading state
 
-
-    const refreshUser = async () => {
-      setLoading(true); // Start loading while fetching user
-      try {
-        // Fetch user if token is in cookies
-        const response = await axios.get(`${baseUrl}profile`, { withCredentials: true });
-        setUser(response.data); // Set user data on success
-      } catch (err) {
-        console.log("Failed to fetch user:", err);
-        setUser(null); // Clear user if error occurs (e.g., logged out or session expired)
-      } finally {
-        setLoading(false); // Stop loading when done
-      }
-    };
-
     useEffect(() => {
-      refreshUser();
+      // Fetch user if token is in cookies
+      axios
+        .get(`${baseUrl}profile`)
+        .then((response) => {
+          setUser(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+          setUser(null)
+        }) .finally(() => {
+          setLoading(false); 
+        })
     }, []); // Empty dependency array for useEffct to run on mount
   
     if (loading) {
