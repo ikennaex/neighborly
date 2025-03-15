@@ -55,14 +55,14 @@ const ManageUsers = () => {
             <tbody>
               {fetchedUsers.map((user) => (
                 <tr key={user.id} className="text-center">
-                  <td className="border p-2">{user.first_name}</td>
-                  <td className="border p-2">{user.last_name}</td>
+                  <td className="border p-2">{user.firstName}</td>
+                  <td className="border p-2">{user.lastName}</td>
                   <td className="border p-2">{user.username}</td>
                   <td className="border p-2">
                   {user.role === 'vendor' ? (
                       <span className="text-green-500 font-semibold">Vendor</span>
                     ) : (
-                      <span className="text-red-500 font-semibold">Not a Vendor</span>
+                      <span className="text-red-500 font-semibold">User</span>
                     )}
                   </td>
                   <td className="border p-2">

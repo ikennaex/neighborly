@@ -11,6 +11,29 @@ const VendorProducts = ({ user }) => { // Pass the logged-in user as a prop
     const [fetchedProduct, setFetchedProduct] = useState([]);
     const [error, setError] = useState(null); 
     const [loading, setLoading] = useState(true);
+    const [vendorData, setVendorData] = useState(null);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await axios.get(`${baseUrl}users`)
+                const fetchedVendor = response.data.filter(user => 
+                    user._id && user._id.toString() === id
+                );
+                setVendorData(fetchedVendor.length > 0 ? fetchedVendor[0] : null);
+                console.log("Fetched vendor:", fetchedVendor);
+                console.log("API Response:", response.data);
+            } catch (err) {
+                setError("Failed to fetch vendor details");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (id) {
+            fetchUser();
+        }
+    }, [id]);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -36,7 +59,7 @@ const VendorProducts = ({ user }) => { // Pass the logged-in user as a prop
 
 
     useEffect(() => {
-        console.log("fetched Product:", fetchedProduct);
+        console.log("fetched vendor:", vendorData);
         console.log("Vendor:", fetchedProduct.vendor, id);
       }, [fetchedProduct]);
 
@@ -51,7 +74,19 @@ const VendorProducts = ({ user }) => { // Pass the logged-in user as a prop
                 ) : fetchedProduct.length === 0 ? (
                     <p className="text-center">Failed to fetch vendor.</p>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <>
+                    {/* Display Vendor Information */}
+                    <h2>Vendor Information</h2>
+                    {vendorData && (
+                        <div className="mb-6 p-4 border rounded-lg shadow-md bg-gray-100">
+                            <h2 className="text-2xl font-bold">{vendorData.businessName}</h2>
+                            <p className="text-gray-700"><strong>Address:</strong> {vendorData.businessAddress}</p>
+                            <p className="text-gray-700"><strong>Phone:</strong> {vendorData.phoneNumber}</p>
+                            <p className="text-gray-700"><strong>Description:</strong> {vendorData.storeDescription}</p>
+                        </div>
+                    )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-30">
+                        <h2>Vendor products</h2>
                         {fetchedProduct.map((product) => (
                             <Link to = {`/products/${product._id}`} >
                             <div key={product.id} className="border p-4 rounded-lg shadow-md">
@@ -88,6 +123,7 @@ const VendorProducts = ({ user }) => { // Pass the logged-in user as a prop
                             </Link>
                         ))}
                     </div>
+                    </>
                 )}
             </div>
         </div>
