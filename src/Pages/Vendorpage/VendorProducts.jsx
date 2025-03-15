@@ -11,18 +11,14 @@ const VendorProducts = ({ user }) => { // Pass the logged-in user as a prop
     const [fetchedProduct, setFetchedProduct] = useState([]);
     const [error, setError] = useState(null); 
     const [loading, setLoading] = useState(true);
-    const [vendorData, setVendorData] = useState(null);
+    const [vendorData, setVendorData] = useState({});
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
                 const response = await axios.get(`${baseUrl}vendor/${id}`)
-                const fetchedVendor = response.data.filter(user => 
-                    user._id && user._id.toString() === id
-                );
-                setVendorData(fetchedVendor.length > 0 ? fetchedVendor[0] : null);
-                console.log("Fetched vendor:", fetchedVendor);
-                console.log("API Response:", response.data);
+                console.log(response)
+                setVendorData(response.data)
             } catch (err) {
                 setError("Failed to fetch vendor details");
             } finally {
