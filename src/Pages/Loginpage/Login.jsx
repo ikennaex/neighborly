@@ -22,9 +22,13 @@ const Login = () => {
 
       // when login is successful it redirects to the homepage
       setRedirect(true)
-    } catch (e) {
+    } catch (err) {
+      if (err.response && err.response.status === 400) { // getting the error message from the backend
+        alert(err.response.data.message)
+      } else {
+        alert("Login failed: " + err.message)
+      }
       console.log(e)
-      alert("Login failed")
     }
   }
 

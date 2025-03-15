@@ -11,32 +11,47 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const [error, setError] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
+    if (!isChecked) {
+      setError("Please agree to the terms and conditions");
+      alert("Please agree to the terms and conditions");
+      return;
+    }
+
     try {
       await axios.post(`${baseUrl}register`, {
-        username, email, password, firstName, lastName
-      })
-      alert("Registration Successful, now you can Login!")
+        username,
+        email,
+        password,
+        firstName,
+        lastName,
+      });
+      alert("Registration Successful, now you can Login!");
       setRedirect(true);
     } catch (err) {
-      alert("Registration failed") 
-      console.log(err)
+      if (err.response && err.response.status === 400) { // getting the error message from the backend
+        alert(err.response.data.message)
+      } else {
+        alert("Registration failed");
+      }
+      console.log(err);
     }
-  
   };
 
   if (redirect) {
     return (
-    <>
-    <Loader />
-    <Navigate to = {"/login"} />
-    </>
-    )
+      <>
+        <Loader />
+        <Navigate to={"/login"} />
+      </>
+    );
   }
-  
+
   return (
     <div className="container mx-auto">
       <div className="p-7 pt-16 lg:max-w-[40rem] m-auto">
@@ -88,11 +103,20 @@ const Register = () => {
             placeholder="Password"
           />
           <div>
-            <input type="checkbox" id="agree" name="agree" />
+            <input
+              type="checkbox"
+              id="agree"
+              name="agree"
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
+            />
             <label className="ml-2" for="agree">
               By creating your account, you agree to our Terms of Use and
               Privacy Policy
             </label>
+            {error && (
+              <p className="text-red-700">agree to terms and conditions</p>
+            )}
           </div>
           <button
             className="bg-customBlue h-14 text-white text-xl rounded-lg"
