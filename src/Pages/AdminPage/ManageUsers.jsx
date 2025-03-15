@@ -1,11 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from "react";
 import axios from 'axios';
 import { baseUrl } from '../../baseUrl';
+import { Outlet, useNavigate } from "react-router-dom";
+import { UserContext } from "../../UserContext";
+import AdminNavbar from './AdminNavbar';
 
 const ManageUsers = () => {
   const [fetchedUsers, setFetchedUsers] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate(); 
+
+  useEffect(() => {
+    if (user.role !== "admin") {
+      navigate("/"); // Redirect to home if not an admin
+    }
+  }, [user, navigate]); // Only re-run when user or navigate changes
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -36,7 +48,10 @@ const ManageUsers = () => {
   };
 
   return (
+    <div className="flex">
+      <AdminNavbar />
     <div className="container mx-auto px-4 py-6">
+      
       <h1 className="text-2xl font-bold mb-4">Manage Users</h1>
 
       {loading ? (
@@ -83,6 +98,8 @@ const ManageUsers = () => {
         </div>
       )}
     </div>
+    </div>
+
   );
 };
 

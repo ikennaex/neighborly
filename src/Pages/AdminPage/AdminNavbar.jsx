@@ -1,8 +1,6 @@
-{/* Remove the navigation button and add like a header for the 3 which will show each link  */}
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaTimes, FaUsers, FaStore, FaMoneyCheck } from "react-icons/fa";
+import { FaBars, FaUsers, FaStore, FaMoneyCheck } from "react-icons/fa";
 
 const AdminNavbar = () => {
     const [isOpen, setIsOpen] = useState(false); // State to toggle sidebar
@@ -12,10 +10,10 @@ const AdminNavbar = () => {
         {/* Mobile Toggle Button */}
         <button 
           className="mt-5 lg:hidden fixed top-20 left-4 z-50 text-customBlue-200 bg-customBlue-600 p-2 rounded-full shadow-md"
-          onClick={() => setIsOpen(!isOpen)}
-          style={{ zIndex: 60 }} // Ensures button doesn't overlap sidebar
+          onClick={() => setIsOpen(true)} // Always opens the menu
+          style={{ zIndex: 60 }} // Ensures button stays above sidebar
         >
-          {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          <FaBars size={24} />
         </button>
   
         {/* Sidebar */}
@@ -48,11 +46,11 @@ const AdminNavbar = () => {
         {isOpen && (
           <div 
             className="fixed inset-0 bg-black bg-opacity-50 lg:hidden"
-            onClick={() => setIsOpen(false)}
+            onClick={() => setIsOpen(false)} // Clicking outside closes the menu
           ></div>
         )}
       </>
     );
-  };
+};
 
-export default AdminNavbar
+export default AdminNavbar;

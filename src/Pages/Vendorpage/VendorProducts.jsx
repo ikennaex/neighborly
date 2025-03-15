@@ -16,7 +16,7 @@ const VendorProducts = ({ user }) => { // Pass the logged-in user as a prop
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await axios.get(`${baseUrl}users`)
+                const response = await axios.get(`${baseUrl}vendor/${id}`)
                 const fetchedVendor = response.data.filter(user => 
                     user._id && user._id.toString() === id
                 );
