@@ -54,7 +54,7 @@ const Navbar = () => {
 
           {user && (
             <div className="bg-customBlue text-white rounded-lg px-5 py-2">
-              <Link to="/user:id">
+              <Link to={`/user/${user._id}`}>
                 <div className="flex justify-between gap-3">
                   <p>Hi {user ? user.firstName : "no info"}</p>
                   <p className="bg-customYellow px-2 rounded-md">
@@ -97,7 +97,7 @@ const Navbar = () => {
 
             {user && (
               <div className="bg-customBlue text-white rounded-lg px-5 py-2">
-                <Link to="/user:id">
+                <Link to={`/user/${user._id}`}>
                   <div className="flex justify-between">
                     <p>Hi {user ? user.firstName : "no info"}</p>
                     <p className="bg-customYellow px-2 rounded-md">

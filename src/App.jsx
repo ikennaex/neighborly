@@ -23,6 +23,7 @@ import PendingPayments from './Pages/AdminPage/PendingPayments'
 import AboutUsPage from './Pages/AboutUsPage/AboutUsPage'
 import WhyChooseUsPage from './Pages/WhyChooseUsPage/WhyChooseUsPage'
 import BlogPage from './Pages/Blog/BlogPage'
+import UserInfo from './Pages/UserInfo/UserInfo'
 
 axios.defaults.withCredentials = true;
 
@@ -52,6 +53,7 @@ function App() {
               <Route path="/vendor/:id" element={<VendorProducts />} />
               <Route path="/becomeavendor" element={<BecomeAVendor />} />
               <Route path="/editproduct/:id" element={<EditProducts />} />
+              <Route path="/user/:id" element={<UserInfo />} />
               <Route path="/newproduct" element={<NewProduct />} />
               {/* Admin Routes */}
               <Route path="/admin" element={<AdminPage />} />
