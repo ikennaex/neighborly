@@ -17,21 +17,13 @@ const Products = ({ search }) => {
       try {
         const response = await axios.get(`${baseUrl}allproducts`); // API endpoint
         setFetchedProducts(response.data);
-        console.log(response.data);
       } catch (err) {
         setError("Failed to fetch products");
-        console.log(err);
       }
     };
 
     fetchProducts();
   }, []);
-
-  // if (error) {
-
-  //   console.log(error)
-  // }
-  // return <p className="text-red-500">{error}</p>;
 
   const filteredProducts = fetchedProducts?.filter(
     (product) =>

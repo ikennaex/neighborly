@@ -13,10 +13,8 @@ const Allproducts = () => {
       try {
         const response = await axios.get(`${baseUrl}allproducts`);
         setFetchedProducts(response.data);
-        console.log(response.data);
       } catch (err) {
         setError("Failed to fetch products");
-        console.log(err);
       }
     };
 

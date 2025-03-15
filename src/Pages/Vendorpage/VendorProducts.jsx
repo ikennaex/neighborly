@@ -17,7 +17,6 @@ const VendorProducts = ({ user }) => { // Pass the logged-in user as a prop
         const fetchUser = async () => {
             try {
                 const response = await axios.get(`${baseUrl}vendor/${id}`)
-                console.log(response)
                 setVendorData(response.data)
             } catch (err) {
                 setError("Failed to fetch vendor details");
@@ -39,8 +38,6 @@ const VendorProducts = ({ user }) => { // Pass the logged-in user as a prop
                     product.vendor && product.vendor.toString() === id
                 );
                 setFetchedProduct(filteredProducts);
-                console.log("Fetched Products:", filteredProducts);
-                console.log("API Response:", response.data);
             } catch (err) {
                 setError("Failed to fetch vendor");
             } finally {
@@ -54,10 +51,6 @@ const VendorProducts = ({ user }) => { // Pass the logged-in user as a prop
     }, []);
 
 
-    useEffect(() => {
-        console.log("fetched vendor:", vendorData);
-        console.log("Vendor:", fetchedProduct.vendor, id);
-      }, [fetchedProduct]);
 
     return (
         <div className="container mx-auto">

@@ -7,8 +7,7 @@ import { UserContext } from "../../UserContext";
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
-  
-  console.log(user)
+
   const menuItems = [
     {
       name: "Categories",
