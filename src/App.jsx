@@ -24,43 +24,48 @@ import AboutUsPage from './Pages/AboutUsPage/AboutUsPage'
 import WhyChooseUsPage from './Pages/WhyChooseUsPage/WhyChooseUsPage'
 import BlogPage from './Pages/Blog/BlogPage'
 
-
 axios.defaults.withCredentials = true;
+
 function App() {
-
   return (
-    
-      <UserContextProvider>
-      <ScrollToTop/>
-      <Navbar />
-      <Routes>
-        <Route path = "/about-us" element = {<AboutUsPage />} />
-        <Route path = "/whychooseus" element = {<WhyChooseUsPage />} />
-        <Route path = "/blog" element = {<BlogPage />} />
-        <Route path = "/login" element = {<Login />} />
-        <Route path = "/register" element = {<Register />} />
+    <UserContextProvider>
+      <ScrollToTop />
+      {/* Wrapper to ensure full height */}
+      <div className="min-h-screen flex flex-col">
+        {/* Navbar */}
+        <Navbar />
 
-        {/* Protected routes  */}
-        <Route element = {<ProtectedRoutes />} >        
-        <Route path = "/" element = {<Homepage />} />
-        <Route path = "/allproducts" element = {<Allproducts />} />
-        <Route path = "/products/:id" element = {<ProductPage />} />
-        <Route path = "/vendor/:id" element = {<VendorProducts />} />
-        <Route path = "/becomeavendor" element = {<BecomeAVendor />} />
-        <Route path = "/editproduct/:id" element = {<EditProducts/>} />
-        <Route path = "/newproduct" element = {<NewProduct />} />
-         {/* Admin Routes */}
-        <Route path = "/admin" element = {<AdminPage />} />
-        <Route path = "/admin/manage-users" element = {<ManageUsers />} />
-        <Route path = "/admin/manage-vendors" element = {<ManageVendors />} />
-        <Route path = "/admin/pending-payments" element = {<PendingPayments />} />
+        {/* Main content that grows */}
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/whychooseus" element={<WhyChooseUsPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
-        </Route>
-      </Routes>
-      <Footer />
-      </UserContextProvider>
-      
+            {/* Protected routes */}
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/allproducts" element={<Allproducts />} />
+              <Route path="/products/:id" element={<ProductPage />} />
+              <Route path="/vendor/:id" element={<VendorProducts />} />
+              <Route path="/becomeavendor" element={<BecomeAVendor />} />
+              <Route path="/editproduct/:id" element={<EditProducts />} />
+              <Route path="/newproduct" element={<NewProduct />} />
+              {/* Admin Routes */}
+              <Route path="/admin" element={<AdminPage />} />
+              <Route path="/admin/manage-users" element={<ManageUsers />} />
+              <Route path="/admin/manage-vendors" element={<ManageVendors />} />
+              <Route path="/admin/pending-payments" element={<PendingPayments />} />
+            </Route>
+          </Routes>
+        </main>
 
+        {/* Footer stays at bottom */}
+        <Footer />
+      </div>
+    </UserContextProvider>
   )
 }
 

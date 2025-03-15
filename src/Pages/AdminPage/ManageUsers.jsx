@@ -10,10 +10,13 @@ const ManageUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`${baseUrl}users`); 
+        const response = await axios.get(`${baseUrl}users`, { withCredentials: true }); 
         setFetchedUsers(response.data);
         console.log("Fetched Users:", response.data);
       } catch (err) {
+        if (err.response && err.response.status === 403) { // getting the error message from the backend
+          alert(err.response.data.message)
+        } 
         setError("Failed to fetch users");
       } finally {
         setLoading(false);

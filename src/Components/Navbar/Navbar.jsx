@@ -6,6 +6,9 @@ import { IoClose } from "react-icons/io5";
 import { UserContext } from "../../UserContext";
 
 const Navbar = () => {
+  const { user } = useContext(UserContext);
+  
+  console.log(user)
   const menuItems = [
     {
       name: "Categories",
@@ -17,18 +20,17 @@ const Navbar = () => {
     },
 
     {
-      name: "Become vendor",
+      name: user.role != "vendor" && user.role != "admin" ? "Become vendor" : "",
       link: "/becomeavendor",
     },
   ];
-
+  
   const [open, setOpen] = useState(false);
-
+  
   const toggle = () => {
     setOpen(!open);
   };
-
-  const { user } = useContext(UserContext);
+  
   return (
     <div className="container mx-auto px-4 py-4 bg-white border-b-2">
       <div className="lg:py-0.5 flex items-center justify-between">
@@ -37,10 +39,10 @@ const Navbar = () => {
             className="logo w-28 lg:w-36 h-auto"
             src="/images/awoofbuyerlogo.png"
             alt="logo"
-          ></img>
+            ></img>
         </Link>
 
-        <div className="hidden gap-20 mx-auto lg:flex cursor-pointer">
+        <div className="hidden gap-20 mx-auto lg:flex cursor-pointer ">
           {menuItems.map((menu) => (
             <Link to={menu.link} className="nav-link">
               {/* <p>Categories</p> */}
@@ -55,15 +57,18 @@ const Navbar = () => {
           {user && (
             <div className="bg-customBlue text-white rounded-lg px-5 py-2">
               <Link to="/user:id">
-              <div className="flex justify-between gap-3">
-                    <p>
-                    Hi {user ? user.firstName : "no info"} 
-                    </p>
-                    <p className="bg-customYellow px-2 rounded-md">
-                    {user ?  (user.role === "user" ? "User" : "Vendor"): "no info"}
-                    </p>
-                    </div>
-                
+                <div className="flex justify-between gap-3">
+                  <p>Hi {user ? user.firstName : "no info"}</p>
+                  <p className="bg-customYellow px-2 rounded-md">
+                    {user
+                      ? user.role === "admin"
+                        ? "Admin"
+                        : user.role === "vendor"
+                        ? "Vendor"
+                        : "User"
+                      : "no info"}
+                  </p>
+                </div>
               </Link>
             </div>
           )}
@@ -82,7 +87,7 @@ const Navbar = () => {
       {/* Mobile menu open */}
       <div>
         {open && (
-          <div className="flex flex-col gap-5 py-5">
+          <div className="flex flex-col gap-5 py-5 justify-between ">
             {menuItems.map((menu) => {
               return (
                 <Link to={menu.link} className="nav-link border-b-2">
@@ -96,14 +101,17 @@ const Navbar = () => {
               <div className="bg-customBlue text-white rounded-lg px-5 py-2">
                 <Link to="/user:id">
                   <div className="flex justify-between">
-                    <p>
-                    Hi {user ? user.firstName : "no info"} 
-                    </p>
+                    <p>Hi {user ? user.firstName : "no info"}</p>
                     <p className="bg-customYellow px-2 rounded-md">
-                    {user ?  (user.role === "user" ? "User" : "Vendor"): "no info"}
+                        {user
+                          ? user.role === "admin"
+                            ? "Admin"
+                            : user.role === "vendor"
+                            ? "Vendor"
+                            : "User"
+                          : "no info"}
                     </p>
-                    </div>
-                  
+                  </div>
                 </Link>
               </div>
             )}
