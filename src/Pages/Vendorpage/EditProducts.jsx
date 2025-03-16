@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { baseUrl } from "../../baseUrl";
+import Loader from '../../Loader/Loader';
 
 const EditProducts = () => {
   const { id } = useParams(); // Get product ID from URL
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   const [fetchedProduct, setFetchedProduct] = useState(null);
   const [formData, setFormData] = useState({
@@ -34,6 +36,8 @@ const EditProducts = () => {
       } catch (err) {
         setError("Failed to fetch product");
         console.error(err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -84,8 +88,14 @@ const EditProducts = () => {
     } catch (err) {
       console.error("Error updating product:", err);
       alert("Failed to update product. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
+
+
+  
+  if (loading) return <Loader />;
 
   return (
     <div className="container mx-auto p-5">

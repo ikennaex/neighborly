@@ -10,6 +10,8 @@ const ProductPage = () => {
   const [fetchedProduct, setFetchedProduct] = useState({});
   const [error, setError] = useState(null); 
   const [loading, setLoading] = useState(true);
+  const [vendorData, setVendorData] = useState(null);
+  var loadedVendorData = null
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -26,13 +28,35 @@ const ProductPage = () => {
     if (id) {
       fetchProduct();
     }
+
+    
   }, [id]);
 
+  useEffect(() => {
+    const fetchUser = async () => {
+        try {
+            const response = await axios.get(`${baseUrl}vendor/${fetchedProduct.vendor}`);
+            setVendorData(response.data);
+            loadedVendorData=response.data
+            console.log(response.data)
+        } catch (err) {
+            setError("Failed to fetch vendor details");
+        }
+    };
+    if (fetchedProduct.vendor) {
+        fetchUser();
+    }
+  }, [fetchedProduct.vendor]);
+
+  
+  console.log('loaded data', loadedVendorData)
   if (loading) return <Loader />;
   if (error) return <h2 className="text-center text-red-500">{error}</h2>;
   if (!fetchedProduct) return <h2 className="text-center">Product Not Found</h2>;
+  if (!vendorData) return <h2 className="text-center">Vendor Not Found</h2>;
 
   const vendorId = fetchedProduct.vendor;
+
 
   return (
     <div className="container mx-auto px-5 lg:px-20 py-10">
@@ -64,9 +88,15 @@ const ProductPage = () => {
 
       {/* Action Buttons */}
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <button className="w-full h-12 rounded-xl text-white bg-customGreen flex items-center justify-center gap-3">
-          <FaWhatsapp size={24} /> Contact Seller
-        </button>
+            <a
+        href={`https://wa.me/+234${vendorData.phoneNumber}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full h-12 rounded-xl text-white bg-customGreen flex items-center justify-center gap-3"
+      >
+        <FaWhatsapp size={24} /> Contact Seller
+      </a>
+
         <button className="w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3">
           <FaDollarSign size={25} /> Make Payment
         </button>
