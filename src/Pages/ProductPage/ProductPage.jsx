@@ -71,7 +71,7 @@ const ProductPage = () => {
         </button>
         <Link to={`/vendor/${vendorId}`} className="w-full">
           <button className="w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3">
-            <FaDollarSign size={25} /> View Vendor Page
+            <FaDollarSign size={25} /> View Vendor Information
           </button>
         </Link>
       </div>
