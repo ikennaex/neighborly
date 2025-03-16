@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from "react";
+import { UserContext } from "../../UserContext";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { FaWhatsapp, FaDollarSign } from "react-icons/fa";
@@ -6,18 +7,21 @@ import { Link } from 'react-router-dom';
 import { baseUrl } from '../../baseUrl';
 
 
-const VendorProducts = ({ user }) => { // Pass the logged-in user as a prop
+const VendorProducts = () => { // Pass the logged-in user as a prop
     const { id } = useParams(); // Get vendor ID from URL
     const [fetchedProduct, setFetchedProduct] = useState([]);
     const [error, setError] = useState(null); 
     const [loading, setLoading] = useState(true);
     const [vendorData, setVendorData] = useState({});
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
                 const response = await axios.get(`${baseUrl}vendor/${id}`)
                 setVendorData(response.data)
+                console.log(user)
+                console.log(response.data)
             } catch (err) {
                 setError("Failed to fetch vendor details");
             } finally {
@@ -94,9 +98,9 @@ const VendorProducts = ({ user }) => { // Pass the logged-in user as a prop
                                 <p className='text-gray-700'>{product.desc}</p>
 
                                 <div className="flex gap-2 flex-col mt-4">
-                                    {user?.vendor && user.vendor === product.vendor && (
+                                    {user && user._id === product.vendor && (
                                         <>
-                                            <Link to={`/editproduct/${product.id}`}>
+                                            <Link to={`/editproduct/${product._id}`}>
                                                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                                     Edit
                                                 </button>

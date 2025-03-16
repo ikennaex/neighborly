@@ -16,6 +16,7 @@ const ProductPage = () => {
       try {
         const response = await axios.get(`${baseUrl}product/${id}`);
         setFetchedProduct(response.data);
+        console.log(response.data)
       } catch (err) {
         setError("Failed to fetch product");
       } finally {
