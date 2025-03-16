@@ -5,22 +5,21 @@ import { baseUrl } from "../../baseUrl";
 import Loader from '../../Loader/Loader';
 
 const EditProducts = () => {
-  const { id } = useParams(); // Get product ID from URL
+  const { id } = useParams();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-
+  const [isUpdating, setIsUpdating] = useState(false); // Track update state
   const [fetchedProduct, setFetchedProduct] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     price: "",
     location: "",
     desc: "",
-    image: null, // New image
+    image: null,
   });
-  const [previewImage, setPreviewImage] = useState(null); // Preview selected image
+  const [previewImage, setPreviewImage] = useState(null);
   const [error, setError] = useState(null);
 
-  // Fetch product data
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -32,7 +31,7 @@ const EditProducts = () => {
           location: response.data.location || "",
           desc: response.data.desc || "",
         });
-        setPreviewImage(response.data.imgUrl); // Set existing image preview
+        setPreviewImage(response.data.imgUrl);
       } catch (err) {
         setError("Failed to fetch product");
         console.error(err);
@@ -49,23 +48,21 @@ const EditProducts = () => {
   if (error) return <h2 className="text-center text-red-500">{error}</h2>;
   if (!fetchedProduct) return <h2 className="text-center">Product Not Found</h2>;
 
-  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle image selection
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setFormData({ ...formData, image: file });
-      setPreviewImage(URL.createObjectURL(file)); // Preview new image
+      setPreviewImage(URL.createObjectURL(file));
     }
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsUpdating(true); // Start updating
 
     try {
       const formDataToSend = new FormData();
@@ -74,7 +71,6 @@ const EditProducts = () => {
       formDataToSend.append("location", formData.location);
       formDataToSend.append("desc", formData.desc);
 
-      // Append image only if a new image is selected
       if (formData.image) {
         formDataToSend.append("img", formData.image);
       }
@@ -89,12 +85,10 @@ const EditProducts = () => {
       console.error("Error updating product:", err);
       alert("Failed to update product. Please try again.");
     } finally {
-      setLoading(false);
+      setIsUpdating(false); // Stop updating
     }
   };
 
-
-  
   if (loading) return <Loader />;
 
   return (
@@ -136,7 +130,6 @@ const EditProducts = () => {
           className="border p-2 rounded"
           required
         />
-
         <input
           type="file"
           accept="image/*"
@@ -144,8 +137,14 @@ const EditProducts = () => {
           className="border p-2 rounded"
         />
 
-        <button type="submit" className="bg-blue-500 text-white py-2 rounded">
-          Update Product
+        <button
+          type="submit"
+          className={`bg-blue-500 text-white py-2 rounded transition ${
+            isUpdating ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          disabled={isUpdating}
+        >
+          {isUpdating ? "Updating..." : "Update Product"}
         </button>
       </form>
     </div>
