@@ -53,6 +53,7 @@ const BecomeAVendor = () => {
   return (
     <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-4">Vendor Registration</h2>
+      <p className='text-center text-customBlue mb-4 font-bold'>Please ensure to supply only CORRECT information</p>
       <form onSubmit={handleSubmit} className="space-y-4">
 
         {/* Business Name */}

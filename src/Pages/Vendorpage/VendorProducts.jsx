@@ -28,7 +28,6 @@ const VendorProducts = () => { // Pass the logged-in user as a prop
                 setLoading(false);
             }
         };
-
         if (id) {
             fetchUser();
         }

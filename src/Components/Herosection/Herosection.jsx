@@ -1,5 +1,6 @@
 import React from 'react'
 import { fridge } from '../../imports'
+import { Link } from 'react-router-dom'
 
 const Herosection = () => {
   return (
@@ -12,8 +13,9 @@ const Herosection = () => {
             </p>
             <p className='italic text-md lg:text-xl'>...buy with ease</p>
         </div>
-
+        <Link to = "/allproducts" >
             <button className='bg-customYellow p-3 border-black font-semibold '>Shop now</button>
+        </Link>
         </div>
 
         <div className='mt-52'>
