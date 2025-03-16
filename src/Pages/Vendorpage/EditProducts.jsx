@@ -72,7 +72,7 @@ const EditProducts = () => {
 
       // Append image only if a new image is selected
       if (formData.image) {
-        formDataToSend.append("image", formData.image);
+        formDataToSend.append("img", formData.image);
       }
 
       await axios.put(`${baseUrl}editproduct/${id}`, formDataToSend, {

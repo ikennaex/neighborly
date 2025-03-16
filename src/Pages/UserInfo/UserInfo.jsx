@@ -7,7 +7,7 @@ import { GrFormUpload } from "react-icons/gr";
 
 const UserInfo = () => {
   const { user, setUser } = useContext(UserContext);
-  console.log(user)
+
 
   const handleLogout = async (e) => {
     e.preventDefault();
