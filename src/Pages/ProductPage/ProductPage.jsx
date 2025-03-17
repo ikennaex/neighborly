@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaWhatsapp, FaDollarSign } from "react-icons/fa";
 import axios from 'axios';
 import { baseUrl } from '../../baseUrl';
 import Loader from '../../Loader/Loader';
+
+// paystack 
+import PaystackPop from "@paystack/inline-js"
+import { UserContext } from '../../UserContext';
 
 const ProductPage = () => {
   const { id } = useParams(); 
@@ -13,12 +17,13 @@ const ProductPage = () => {
   const [vendorData, setVendorData] = useState(null);
   var loadedVendorData = null
 
+  const { user } = useContext(UserContext);
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(`${baseUrl}product/${id}`);
         setFetchedProduct(response.data);
-        console.log(response.data)
       } catch (err) {
         setError("Failed to fetch product");
       } finally {
@@ -38,7 +43,6 @@ const ProductPage = () => {
             const response = await axios.get(`${baseUrl}vendor/${fetchedProduct.vendor}`);
             setVendorData(response.data);
             loadedVendorData=response.data
-            console.log(response.data)
         } catch (err) {
             setError("Failed to fetch vendor details");
         }
@@ -48,14 +52,34 @@ const ProductPage = () => {
     }
   }, [fetchedProduct.vendor]);
 
-  
-  console.log('loaded data', loadedVendorData)
+
   if (loading) return <Loader />;
   if (error) return <h2 className="text-center text-red-500">{error}</h2>;
   if (!fetchedProduct) return <h2 className="text-center">Product Not Found</h2>;
   if (!vendorData) return <h2 className="text-center">Vendor Not Found</h2>;
 
   const vendorId = fetchedProduct.vendor;
+
+  // Paystack Payment 
+  const paystackPayment = (e) => {
+    e.preventDefault()
+
+    const paystack = new PaystackPop()
+    paystack.newTransaction({
+      key: "pk_test_71e4aeeaf18abf48676460a4b2aa122415142cf7",
+      amount: fetchedProduct.price * 100,
+      email: user.email,
+      firstname: user.firstName,
+      lastname: user.lastName,
+      onSuccess(transaction) {
+        message = `Payment Successful! ${transaction.reference}`
+        alert(message)
+      },
+      onCancel() {
+        alert("Payment Cancelled")
+      }
+    })
+  }
 
 
   return (
@@ -89,7 +113,7 @@ const ProductPage = () => {
       {/* Action Buttons */}
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <a
-        href={`https://wa.me/+234${vendorData.phoneNumber}`}
+        href={`https://wa.me/234${vendorData.phoneNumber}`}
         target="_blank"
         rel="noopener noreferrer"
         className="w-full h-12 rounded-xl text-white bg-customGreen flex items-center justify-center gap-3"
@@ -97,7 +121,7 @@ const ProductPage = () => {
         <FaWhatsapp size={24} /> Contact Seller
       </a>
 
-        <button className="w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3">
+        <button onClick={paystackPayment} className="w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3">
           <FaDollarSign size={25} /> Make Payment
         </button>
         <Link to={`/vendor/${vendorId}`} className="w-full">
