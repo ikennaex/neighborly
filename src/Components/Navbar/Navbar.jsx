@@ -10,11 +10,11 @@ const Navbar = () => {
 
   const menuItems = [
     {
-      name: "Categories",
+      name: user && "Categories",
       link: "/categories",
     },
     {
-      name: "About Us",
+      name: user && "About Us",
       link: "/about-us",
     },
     {
@@ -73,6 +73,7 @@ const Navbar = () => {
         </div>
 
         {/* toggle menu   */}
+        {user &&
         <div className="lg:hidden" onClick={toggle}>
           {open ? (
             <IoClose size={40} className="menu-icon" />
@@ -80,6 +81,7 @@ const Navbar = () => {
             <IoIosMenu size={40} className="menu-icon" />
           )}
         </div>
+        }
       </div>
 
       {/* Mobile menu open */}

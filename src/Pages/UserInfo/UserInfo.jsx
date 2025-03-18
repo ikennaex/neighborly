@@ -17,9 +17,11 @@ const UserInfo = () => {
 
   const handleLogout = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
       await axios.post(`${baseUrl}logout`, {});
       setUser(null);
+      setLoading(false)
       navigate("/login");
     } catch (err) {
       console.error(err);
@@ -73,13 +75,13 @@ const UserInfo = () => {
           </Link>
         )}
 
-        <div>
+        <div className="bg-blue-100 p-6 rounded-xl">
           <h2 className="text-3xl font-bold pb-3">User Information</h2>
           {user.role === "vendor" && (
             <div>
-              <p className="text-xl">Business Name: {user.businessName}</p>
-              <p className="text-xl">Business Address: {user.businessAddress}</p>
-              <p className="text-xl">Phone Number: {user.phoneNumber}</p>
+              <p className="text-xl"><span className="font-bold">Business Name:</span> {user.businessName}</p>
+              <p className="text-xl"><span className="font-bold">Business Address:</span> {user.businessAddress}</p>
+              <p className="text-xl"><span className="font-bold">Phone Number:</span> {user.phoneNumber}</p>
             </div>
           )}
           <p className="text-xl">Name: {user.firstName + " " + user.lastName}</p>
