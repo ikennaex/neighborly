@@ -1,13 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FaWhatsapp, FaDollarSign } from "react-icons/fa";
+import { FaWhatsapp, FaDollarSign, FaUserAlt } from "react-icons/fa";
 import axios from 'axios';
 import { baseUrl } from '../../baseUrl';
 import Loader from '../../Loader/Loader';
-
-// paystack 
-import PaystackPop from "@paystack/inline-js"
-import { UserContext } from '../../UserContext';
+import Checkout from '../Checkout/Checkout';
 
 const ProductPage = () => {
   const { id } = useParams(); 
@@ -16,9 +13,7 @@ const ProductPage = () => {
   const [loading, setLoading] = useState(true);
   const [vendorData, setVendorData] = useState(null);
   var loadedVendorData = null
-
-  const { user } = useContext(UserContext);
-
+  
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -60,27 +55,6 @@ const ProductPage = () => {
 
   const vendorId = fetchedProduct.vendor;
 
-  // Paystack Payment 
-  const paystackPayment = (e) => {
-    e.preventDefault()
-
-    const paystack = new PaystackPop()
-    paystack.newTransaction({
-      key: "pk_test_71e4aeeaf18abf48676460a4b2aa122415142cf7",
-      amount: fetchedProduct.price * 100,
-      email: user.email,
-      firstname: user.firstName,
-      lastname: user.lastName,
-      onSuccess(transaction) {
-        message = `Payment Successful! ${transaction.reference}`
-        alert(message)
-      },
-      onCancel() {
-        alert("Payment Cancelled")
-      }
-    })
-  }
-
 
   return (
     <div className="container mx-auto px-5 lg:px-20 py-10">
@@ -121,12 +95,11 @@ const ProductPage = () => {
         <FaWhatsapp size={24} /> Contact Seller
       </a>
 
-        <button onClick={paystackPayment} className="w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3">
-          <FaDollarSign size={25} /> Make Payment
-        </button>
+      <Checkout fetchedProduct = {fetchedProduct} vendorId = {vendorData._id} />
+
         <Link to={`/vendor/${vendorId}`} className="w-full">
           <button className="w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3">
-            <FaDollarSign size={25} /> View Vendor Information
+            <FaUserAlt  size={20} /> View Vendor Information
           </button>
         </Link>
       </div>

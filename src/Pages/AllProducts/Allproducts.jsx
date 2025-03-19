@@ -43,7 +43,7 @@ const Allproducts = () => {
             {fetchedProducts.map((product) => (
               <Link to={`/products/${product._id}`} key={product.id}>
                 <div className="flex flex-col justify-between items-center border-customGreen border-2 p-2 text-center rounded-xl">
-                  <img className="h-32 object-cover" src={product.img} alt={product.name} />
+                  <img className="h-32 object-cover" src={`${baseUrl}${product.imgUrl[0]}`} alt={product.name} />
                   <p>{product.name}</p>
                   <p>{product.price}</p>
                 </div>

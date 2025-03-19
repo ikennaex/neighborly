@@ -88,7 +88,7 @@ const VendorProducts = () => {
                 ) : (
                     <>
                         {/* Display Vendor Information */}
-                        <h2>Vendor Information</h2>
+                        <h2 className="text-xl font-bold">Vendor Information</h2>
                         {vendorData && (
                             <div className="mb-6 p-4 border rounded-lg shadow-md bg-gray-100">
                                 <h2 className="text-2xl font-bold">{vendorData.businessName}</h2>
@@ -102,12 +102,12 @@ const VendorProducts = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                             {fetchedProduct.map((product) => (
                                 <div key={product._id} className="border p-4 rounded-lg shadow-md">
-                                    <img src={product.img} alt={product.name} className="w-full h-40 object-cover mb-4 rounded" />
+                                    <img src={`${baseUrl}${product.imgUrl[0]}`} alt={product.name} className="w-full h-50 object-cover mb-4 rounded" />
 
                                     <div className='py-2'>
                                         <h2 className='text-xl font-semibold'>{product.name}</h2>
                                         <p className='font-semibold flex items-center'>
-                                            <FaDollarSign className="mr-1" /> {product.price}
+                                        ₦ {product.price}
                                         </p>
                                         <p className='text-sm'>{product.location}</p>
                                     </div>

@@ -36,7 +36,7 @@ const AdminNavbar = () => {
             </li>
             <li>
               <Link to="/admin/pending-payments" className="flex items-center gap-3 hover:text-blue-400">
-                <FaMoneyCheck size={20} /> Pending Payments
+                <FaMoneyCheck size={20} />  Transactions
               </Link>
             </li>
           </ul>

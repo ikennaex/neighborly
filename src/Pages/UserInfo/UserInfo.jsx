@@ -95,6 +95,9 @@ const UserInfo = () => {
           </button>
         </div>
 
+        {user && user.role === "vendor" &&
+
+        <>
         <h2 className="mt-6 text-xl font-bold">Vendor Products</h2>
 
         {/* Show Loader when fetching products */}
@@ -109,7 +112,7 @@ const UserInfo = () => {
                 <div className="py-2">
                   <h2 className="text-xl font-semibold">{product.name}</h2>
                   <p className="font-semibold flex items-center">
-                    <FaDollarSign className="mr-1" /> {product.price}
+                  ₦{product.price}
                   </p>
                   <p className="text-sm">{product.location}</p>
                 </div>
@@ -146,7 +149,9 @@ const UserInfo = () => {
               </div>
             ))}
           </div>
-        )}
+        )} 
+        </>
+        }
       </div>
     </div>
   );
