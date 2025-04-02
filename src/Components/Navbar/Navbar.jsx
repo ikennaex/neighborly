@@ -35,13 +35,13 @@ const Navbar = () => {
       <div className="lg:py-0.5 flex items-center justify-between">
         <Link to="/">
           <img
-            className="logo w-14 lg:w-16 h-auto"
+            className="logo w-14 lg:w-20 h-auto"
             src= {logo}
             alt="logo"
             ></img>
         </Link>
 
-        <div className="hidden gap-20 mx-auto lg:flex cursor-pointer lg:items-center ">
+        <div className="hidden gap-20  lg:flex cursor-pointer lg:items-center lg:justify-evenly">
           {menuItems.map((menu) => (
             <Link to={menu.link} className="nav-link">
               {/* <p>Categories</p> */}
@@ -88,7 +88,7 @@ const Navbar = () => {
       {/* Mobile menu open */}
       <div>
         {open && (
-          <div className="flex flex-col gap-5 py-5 justify-between ">
+          <div className="flex flex-col gap-5 py-5 justify-between">
             {menuItems.map((menu) => {
               return (
                 <Link to={menu.link} className="nav-link border-b-2">
