@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "../../Loader/Loader";
 import { baseUrl } from "../../baseUrl";
+import "./allproducts.css"
 
 const Allproducts = () => {
   const [fetchedProducts, setFetchedProducts] = useState([]);
@@ -24,7 +25,7 @@ const Allproducts = () => {
   return (
     <div className="container mx-auto px-4">
       <div className="py-7">
-        <div className="bg-customGreen h-28 mb-8 text-white p-5 flex flex-col items-center justify-center rounded-xl">
+        <div className="css-pattern bg-customGreen h-28 mb-8 text-white p-5 flex flex-col items-center justify-center rounded-xl">
           <p className="text-xl font-bold text-center">Products</p>
           <p>Shop best deals only on awoof buyer</p>
         </div>

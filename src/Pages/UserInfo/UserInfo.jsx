@@ -4,8 +4,9 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { baseUrl } from "../../baseUrl";
 import { GrFormUpload } from "react-icons/gr";
-import { FaWhatsapp, FaDollarSign } from "react-icons/fa";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 import Loader from "../../Loader/Loader"; // Import Loader component
+import UserTransactions from "../UserTransactions/UserTransactions";
 
 const UserInfo = () => {
   const { user, setUser } = useContext(UserContext);
@@ -48,6 +49,7 @@ const UserInfo = () => {
     }
   }, [id, user.role]);
 
+
   const handleDelete = async (productId) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this product?");
     if (confirmDelete) {
@@ -69,13 +71,20 @@ const UserInfo = () => {
     <div className="container mx-auto">
       <div className="p-7">
         {user.role === "vendor" && (
+          <div className="flex gap-7">
           <Link className="flex items-center pb-4 gap-2" to="/newproduct">
             <GrFormUpload className="text-customBlue" size={30} />
             <p className="text-customBlue text-bold underline text-xl">Upload a new product</p>
           </Link>
+
+          <Link className="flex items-center pb-4 gap-2" to={`/orders/${user._id}`}>
+            <MdOutlineFavoriteBorder className="text-customBlue" size={30} />
+            <p className="text-customBlue text-bold underline text-xl">View orders</p>
+          </Link>
+          </div>
         )}
 
-        <div className="bg-blue-100 p-6 rounded-xl">
+        <div className="bg-blue-100 p-6 rounded-xl lg:w-1/2">
           <h2 className="text-3xl font-bold pb-3">User Information</h2>
           {user.role === "vendor" && (
             <div>
@@ -152,6 +161,8 @@ const UserInfo = () => {
         )} 
         </>
         }
+
+        <UserTransactions />
       </div>
     </div>
   );

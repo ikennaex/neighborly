@@ -28,7 +28,8 @@ const Products = ({ search }) => {
   const filteredProducts = fetchedProducts?.filter(
     (product) =>
       product.name.toLowerCase().includes(search.toLowerCase()) ||
-      product.desc.toLowerCase().includes(search.toLowerCase())
+      product.desc.toLowerCase().includes(search.toLowerCase()) ||
+      product.location.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -46,7 +47,7 @@ const Products = ({ search }) => {
                   {/* Product Image */}
                   <div className="object-cover w-full">
                     <img
-                      className="h-48 w-full object-cover rounded-lg"
+                      className="h-48 w-full lg:object-cover rounded-lg"
                       src={`${baseUrl}${product.imgUrl}`}
                       alt={product.name}
                     />

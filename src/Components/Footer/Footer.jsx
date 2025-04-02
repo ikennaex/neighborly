@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className='bg-gray-900 text-white p-3 '>
       <div className='text-sm'>
-        <p className='font-bold text-white text-center'>Awoof buyer</p>
+        <p className='font-bold text-white text-center'>Neighborly</p>
 
         <div className='my-5'>
         <p>About Us</p>
@@ -16,7 +16,7 @@ const Footer = () => {
       </div>
 
       <p className='text-center py-4'>
-        &copy; {date} awoofbuyer.com
+        &copy; {date} Neighborly.com
       </p>
     </div>
   )

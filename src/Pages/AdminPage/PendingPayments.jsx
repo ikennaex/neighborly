@@ -4,6 +4,7 @@ import { UserContext } from "../../UserContext";
 import AdminNavbar from './AdminNavbar';
 import axios from "axios";
 import { baseUrl } from "../../baseUrl";
+import { format } from "date-fns";
 
 const PendingPayments = () => {
   
@@ -37,6 +38,7 @@ const PendingPayments = () => {
     fetchTransactions()
   }, [])
 
+  console.log(transactions)
   
   return (
     <div className="flex">
@@ -62,10 +64,10 @@ const PendingPayments = () => {
             <tbody>
               {transactions.map((transaction) => (
                 <tr key={user.id} className="text-center">
-                  <td className="border p-2">{transaction.user}</td>
-                  <td className="border p-2">{transaction.vendor}</td>
+                  <td className="border p-2">{transaction.userName}</td>
+                  <td className="border p-2">{transaction.vendorName}</td>
                   <td className="border p-2  text-customGreen">{transaction.status}</td>
-                  <td className="border p-2">{transaction.date}</td>
+                  <td className="border p-2">{format(transaction.createdAt, "MMMM, d yyyy")}</td>
                   <td className="border p-2">{transaction.reference}</td>
                 </tr>
               ))}

@@ -67,11 +67,11 @@ const ProductPage = () => {
           <img src={`${baseUrl}${fetchedProduct.imgUrl[0]}`} 
                alt={fetchedProduct.name} 
                className="w-full max-w-full object-cover rounded-lg shadow-lg" />
-          <div className='flex gap-2 mt-4'>
+          {/* <div className='flex gap-2 mt-4'>
             <div className='h-16 w-20 bg-slate-400 rounded-md'></div>
             <div className='h-16 w-20 bg-slate-400 rounded-md'></div>
             <div className='h-16 w-20 bg-slate-400 rounded-md'></div>
-          </div>
+          </div> */}
         </div>
 
         {/* Product Information */}
@@ -95,7 +95,8 @@ const ProductPage = () => {
         <FaWhatsapp size={24} /> Contact Seller
       </a>
 
-      <Checkout fetchedProduct = {fetchedProduct} vendorId = {vendorData._id} />
+      <Checkout fetchedProduct = {fetchedProduct} vendorData = {vendorData} />
+      
 
         <Link to={`/vendor/${vendorId}`} className="w-full">
           <button className="w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3">

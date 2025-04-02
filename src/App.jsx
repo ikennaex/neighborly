@@ -24,6 +24,7 @@ import AboutUsPage from './Pages/AboutUsPage/AboutUsPage'
 import WhyChooseUsPage from './Pages/WhyChooseUsPage/WhyChooseUsPage'
 import BlogPage from './Pages/Blog/BlogPage'
 import UserInfo from './Pages/UserInfo/UserInfo'
+import VendorOrder from './Pages/Vendorpage/VendorOrder'
 
 axios.defaults.withCredentials = true;
 
@@ -53,6 +54,7 @@ function App() {
               <Route path="/vendor/:id" element={<VendorProducts />} />
               <Route path="/becomeavendor" element={<BecomeAVendor />} />
               <Route path="/editproduct/:id" element={<EditProducts />} />
+              <Route path="/orders/:id" element={<VendorOrder />} />
               <Route path="/user/:id" element={<UserInfo />} />
               <Route path="/newproduct" element={<NewProduct />} />
               {/* Admin Routes */}
@@ -61,6 +63,9 @@ function App() {
               <Route path="/admin/manage-vendors" element={<ManageVendors />} />
               <Route path="/admin/pending-payments" element={<PendingPayments />} />
             </Route>
+
+            {/* 404 page */}
+            <Route path="*" element={<div className='text-center text-2xl font-bold text-customBlue pt-16'>Page not found</div>} />
           </Routes>
         </main>
 

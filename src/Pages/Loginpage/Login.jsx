@@ -49,10 +49,10 @@ const Login = () => {
     <div className="container mx-auto">
       <div className="p-7 pt-16  h-lvh m-auto">
         <div className="flex flex-col lg:flex-row gap-9 items-center">
-          <div className="wobble-hor-bottom text-center lg:text-left lg:text-5xl text-4xl lg:max-w-[30rem] font-bold lg:leading-[45px] lg:tracking-[-3px] tracking-[-2px] text-customBlue"> <span className="text-black">Awoof Buyer</span> is the best platform to sell and buy used products.</div>
+          <div className="wobble-hor-bottom text-center lg:text-left lg:text-5xl text-4xl lg:max-w-[30rem] font-bold lg:leading-[45px] lg:tracking-[-3px] tracking-[-2px] text-customBlue"> <span className="text-black">Neighborly</span> is the best platform to sell and buy used products.</div>
 
           <div className="lg:w-1/2 w-full ">
-            <h2 className="text-2xl text-center  mb-7">Login to Awoof Buyer</h2>
+            <h2 className="text-2xl text-center  mb-7">Login to Neighborly</h2>
 
             <form
               className="flex flex-col gap-5"
@@ -84,7 +84,7 @@ const Login = () => {
             </form>
 
             <p className="pt-7">
-              New to Awoof Buyer?{" "}
+              New to Neighborly?{" "}
               <Link className="text-customBlue  font-bold" to="/register">
                 Register here
               </Link>

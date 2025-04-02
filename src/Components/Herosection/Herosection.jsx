@@ -1,6 +1,7 @@
 import React from 'react'
 import { fridge } from '../../imports'
 import { Link } from 'react-router-dom'
+import "./herosection.css"
 
 const Herosection = () => {
   return (

@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { IoIosMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { UserContext } from "../../UserContext";
+import { logo } from "../../imports";
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
@@ -34,13 +35,13 @@ const Navbar = () => {
       <div className="lg:py-0.5 flex items-center justify-between">
         <Link to="/">
           <img
-            className="logo w-28 lg:w-36 h-auto"
-            src="/images/awoofbuyerlogo.png"
+            className="logo w-14 lg:w-16 h-auto"
+            src= {logo}
             alt="logo"
             ></img>
         </Link>
 
-        <div className="hidden gap-20 mx-auto lg:flex cursor-pointer ">
+        <div className="hidden gap-20 mx-auto lg:flex cursor-pointer lg:items-center ">
           {menuItems.map((menu) => (
             <Link to={menu.link} className="nav-link">
               {/* <p>Categories</p> */}
