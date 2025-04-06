@@ -29,7 +29,7 @@ const Categories = () => {
       <div className='py-7'>
         <p className='text-xl font-bold text-center mb-5 '>what are you looking for ?</p>
 
-        <div className='flex gap-3 md:overflow-x-scroll w-full whitespace-nowrap justify-center'>
+        <div className='flex gap-3 md:overflow-x-scroll w-full whitespace-nowrap lg:justify-center'>
             {items.map((item, index) => (
                 <div key={index} className='flex-shrink-0'>
 
