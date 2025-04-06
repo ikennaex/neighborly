@@ -37,8 +37,6 @@ const PendingPayments = () => {
 
     fetchTransactions()
   }, [])
-
-  console.log(transactions)
   
   return (
     <div className="flex">

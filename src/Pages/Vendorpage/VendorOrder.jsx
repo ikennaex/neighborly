@@ -22,8 +22,6 @@ const VendorOrder = () => {``
     fetchVendorOrders()
   }, [])
 
-  console.log(vendorOrders)
-
   return (
     <div className='container'>
       <div className='mx-auto p-7'>

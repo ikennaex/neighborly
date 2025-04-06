@@ -35,7 +35,7 @@ const Navbar = () => {
       <div className="lg:py-0.5 flex items-center justify-between">
         <Link to="/">
           <img
-            className="logo w-14 lg:w-20 h-auto"
+            className="logo w-14 lg:w-18 h-auto"
             src= {logo}
             alt="logo"
             ></img>

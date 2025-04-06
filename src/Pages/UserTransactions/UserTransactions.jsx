@@ -22,7 +22,6 @@ const UserTransactions = () => {
         
       }, [])
 
-      console.log(transactions)
   return (
         <div className="mt-6">
           <h2 className="text-xl font-bold mb-4">Transactions ({transactions.length})</h2>
