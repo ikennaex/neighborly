@@ -88,7 +88,7 @@ const VendorProducts = () => {
                 ) : (
                     <>
                         {/* Display Vendor Information */}
-                        <h2 className="text-xl font-bold">Vendor Information</h2>
+                        <h2 className="text-xl font-bold py-6">Vendor Information</h2>
                         {vendorData && (
                             <div className="mb-6 p-4 border rounded-lg shadow-md bg-gray-100">
                                 <h2 className="text-2xl font-bold">{vendorData.businessName}</h2>
