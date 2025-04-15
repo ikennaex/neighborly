@@ -26,9 +26,9 @@ const UserTransactions = () => {
         <div className="mt-6">
           <h2 className="text-xl font-bold mb-4">Transactions ({transactions.length})</h2>
           {
-            transactions.map((item) => {
+            transactions.slice().reverse().map((item) => {
                 return (
-                <div className="bg-blue-100 mb-3 flex justify-between p-3 rounded-md lg:w-1/2">
+                <div className="bg-blue-100 mb-3 flex  justify-between p-3 rounded-md lg:w-1/2">
                 <div>
                   <p className='font-bold text-xl text-customBlue'>{item.product ? item.product.name: "not defined"}</p>
                   <p className='text-smc'>{format(item.createdAt, "EEEE, MMMM d yyyy")}</p>

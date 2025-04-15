@@ -12,7 +12,7 @@ const ProductPage = () => {
   const [error, setError] = useState(null); 
   const [loading, setLoading] = useState(true);
   const [vendorData, setVendorData] = useState(null);
-  var loadedVendorData = null
+  // var loadedVendorData = null
   
   useEffect(() => {
     const fetchProduct = async () => {
@@ -37,7 +37,7 @@ const ProductPage = () => {
         try {
             const response = await axios.get(`${baseUrl}vendor/${fetchedProduct.vendor}`);
             setVendorData(response.data);
-            loadedVendorData=response.data
+            // loadedVendorData=response.data
         } catch (err) {
             setError("Failed to fetch vendor details");
         }
@@ -79,6 +79,7 @@ const ProductPage = () => {
           <h1 className="text-2xl font-bold">{fetchedProduct.name}</h1>
           <p className="text-lg font-semibold text-gray-700">₦{fetchedProduct.price}</p>
           <p className="text-sm text-gray-500">{fetchedProduct.location}</p>
+          <p>category: <span className='text-customBlue'>{fetchedProduct.category}</span></p>
           <div className="h-0.5 bg-customGreen my-4"></div>
           <p className="text-gray-700">{fetchedProduct.desc}</p>
         </div>

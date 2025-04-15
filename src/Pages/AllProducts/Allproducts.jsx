@@ -27,7 +27,7 @@ const Allproducts = () => {
       <div className="py-7">
         <div className="css-pattern bg-customGreen h-28 mb-8 text-white p-5 flex flex-col items-center justify-center rounded-xl">
           <p className="text-xl font-bold text-center">Products</p>
-          <p>Shop best deals only on awoof buyer</p>
+          <p>Shop best deals only on Neighborly</p>
         </div>
 
         <div className="flex items-center my-4">
@@ -40,13 +40,23 @@ const Allproducts = () => {
         </div>
         
         {fetchedProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {fetchedProducts.map((product) => (
-              <Link to={`/products/${product._id}`} key={product.id}>
-                <div className="flex flex-col justify-between items-center border-customGreen border-2 p-2 text-center rounded-xl">
-                  <img className="h-32 object-cover" src={`${baseUrl}${product.imgUrl[0]}`} alt={product.name} />
-                  <p>{product.name}</p>
-                  <p>{product.price}</p>
+              <Link key={product.id} to={`/products/${product._id}`}>
+                <div className="flex flex-col justify-between items-center bg-white p-4 text-center rounded-xl h-84 transition-shadow duration-300 hover:shadow-lg">
+                  {/* Product Image */}
+                  <div className="object-cover w-full">
+                    <img
+                      className="h-48 w-full object-contain rounded-lg"
+                      src={`${baseUrl}${product.imgUrl}`}
+                      alt={product.name}
+                    />
+                  </div>
+
+                  {/* Product Details */}
+                  <p className="font-semibold mt-2">{product.name}</p>
+                  <p className="text-gray-600">₦{product.price}</p>
+                  <p className="text-gray-600">{product.location}</p>
                 </div>
               </Link>
             ))}

@@ -25,6 +25,9 @@ import WhyChooseUsPage from './Pages/WhyChooseUsPage/WhyChooseUsPage'
 import BlogPage from './Pages/Blog/BlogPage'
 import UserInfo from './Pages/UserInfo/UserInfo'
 import VendorOrder from './Pages/Vendorpage/VendorOrder'
+import CategoriesPage from './Pages/CategoriesPage/CategoriesPage'
+import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy'
+import CategoriesList from './Pages/CategoriesPage/CategoriesList'
 
 axios.defaults.withCredentials = true;
 
@@ -45,6 +48,8 @@ function App() {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+            {/* <Route path="/termsandcondition" element={<PrivacyPolicy />} /> */}
 
             {/* Protected routes */}
             <Route element={<ProtectedRoutes />}>
@@ -57,6 +62,8 @@ function App() {
               <Route path="/orders/:id" element={<VendorOrder />} />
               <Route path="/user/:id" element={<UserInfo />} />
               <Route path="/newproduct" element={<NewProduct />} />
+              <Route path="/categories" element={<CategoriesPage />} />
+              <Route path="/categories/:categoryName" element={<CategoriesList />} />
               {/* Admin Routes */}
               <Route path="/admin" element={<AdminPage />} />
               <Route path="/admin/manage-users" element={<ManageUsers />} />

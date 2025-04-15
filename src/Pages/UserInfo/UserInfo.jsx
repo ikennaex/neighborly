@@ -128,7 +128,7 @@ const UserInfo = () => {
 
                 <div className="h-0.5 bg-customGreen my-2"></div>
 
-                <p className="text-gray-700">{product.desc}</p>
+                {/* <p className="text-gray-700">{product.desc}</p> */}
 
                 {/* Edit and Delete Buttons */}
                 <div className="flex gap-2 flex-col mt-4">
@@ -162,6 +162,7 @@ const UserInfo = () => {
         </>
         }
 
+        {/* user transactions */}
         <UserTransactions />
       </div>
     </div>

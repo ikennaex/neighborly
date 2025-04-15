@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
     const date = new Date().getFullYear()
@@ -8,10 +9,13 @@ const Footer = () => {
         <p className='font-bold text-white text-center'>Neighborly</p>
 
         <div className='my-5'>
+        <Link to={"/about-us"} >
         <p>About Us</p>
-        <p>Terms and condition</p>
+        </Link>
+        <Link to={"/privacypolicy"} >
         <p>Privacy Policy</p>
-        <p>Cookie Policy</p>
+        </Link>
+        <p>Terms and condition</p>
         </div>
       </div>
 

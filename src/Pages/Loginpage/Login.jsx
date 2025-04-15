@@ -10,10 +10,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const { user, setUser } = useContext(UserContext);
+  const [loading, setLoading] = useState(false)
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+    setLoading(true)
     try {
       // this grabs user infomation sent as json from the backend
       const { data } = await axios.post(
@@ -22,6 +23,7 @@ const Login = () => {
         { withCredentials: true }
       );
       setUser(data);
+      setLoading(false)
       alert("Login successful");
 
       // when login is successful it redirects to the homepage
@@ -79,7 +81,7 @@ const Login = () => {
                 className="bg-customBlue h-14 text-white text-xl rounded-lg"
                 type="submit"
               >
-                Login
+                {loading ? "logging in...": "Login"}
               </button>
             </form>
 

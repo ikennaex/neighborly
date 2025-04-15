@@ -9,7 +9,7 @@ const NewProduct = () => {
     desc: "",
     price: "",
     img: null,
-    category: "Electronics", // Default category
+    category: "", // Default category
     location: "",
   });
 
@@ -53,7 +53,7 @@ const NewProduct = () => {
         desc: "",
         price: "",
         img: null,
-        category: "Electronics",
+        category: "",
         location: "",
       });
       setPreview(null);
@@ -85,13 +85,31 @@ const NewProduct = () => {
             <input type="number" name="price" value={product.price} onChange={handleChange} required className="w-full border rounded-lg p-2 mt-1" />
           </div>
           <div>
-            <label className="block text-sm font-medium">Category</label>
+            <label placeholder = "s" className="block text-sm font-medium">Category</label>
             <select name="category" value={product.category} onChange={handleChange} className="w-full border rounded-lg p-2 mt-1">
-              <option value="Electronics">Electronics</option>
-              <option value="Phones and Tablets">Phones and Tablets</option>
-              <option value="Home Appliances">Home Appliances</option>
-              <option value="Beauty">Beauty</option>
-              <option value="Kids">Kids</option>
+              <option value="">Select a Category</option>
+              <option value="electronics">Electronics</option>
+              <option value="phones-&-tablets">Phones & Tablets</option>
+              <option value="home-appliances">Home Appliances</option>
+              <option value="beauty">Beauty</option>
+              <option value="kids">Kids</option>
+              <option value="artisans">Artisans</option>
+              <option value="talents">Talents</option>
+              <option value="perfume">Perfume</option>
+              <option value="real-estate">Real Estate</option>
+              <option value="hospitality">Hospitality</option>
+              <option value="health">Health</option>
+              <option value="drivers">Drivers</option>
+              <option value="cars">Cars</option>
+              <option value="logistics">Logistics</option>
+              <option value="adult-toys">Adult Toys</option>
+              <option value="aphrodisiacs">Aphrodisiacs</option>
+              <option value="jewelry">Jewelry</option>
+              <option value="building-materials">Building Materials</option>
+              <option value="thrift-wears">Thrift Wears</option>
+              <option value="tailor">Tailor</option>
+              <option value="makeup-artist">Makeup Artist</option>
+              <option value="fashion-designers">Fashion Designers</option>
             </select>
           </div>
           <div>
