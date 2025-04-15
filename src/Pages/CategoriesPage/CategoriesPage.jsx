@@ -130,8 +130,8 @@ const CategoriesPage = () => {
             {categories.map((item) => {
                 return (
                     <Link to={`/categories/${item.dbName}`} >
-                <div className='bg-stone-200 rounded-xl w-32 py-3 flex flex-col items-center justify-center px-7 cursor-pointer'>
-                    <img className='h-8 w-fit' src= {item.img} alt="" />
+                <div className='bg-stone-200 rounded-xl w-32 py-3 flex flex-col items-center justify-center px-7 cursor-pointer '>
+                    <img className='h-8 w-fit object-contain' src= {item.img} alt="" />
                     <p className='text-center'>{item.text}</p>
                 </div>
                 </Link>
