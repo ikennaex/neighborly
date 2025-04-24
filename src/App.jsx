@@ -28,6 +28,9 @@ import VendorOrder from './Pages/Vendorpage/VendorOrder'
 import CategoriesPage from './Pages/CategoriesPage/CategoriesPage'
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy'
 import CategoriesList from './Pages/CategoriesPage/CategoriesList'
+import AdRequest from './Pages/AdminPage/AdRequest'
+import RunAdvert from './Pages/Vendorpage/RunAdvert'
+import RunningAds from './Pages/AdminPage/RunningAds'
 
 axios.defaults.withCredentials = true;
 
@@ -62,13 +65,16 @@ function App() {
               <Route path="/orders/:id" element={<VendorOrder />} />
               <Route path="/user/:id" element={<UserInfo />} />
               <Route path="/newproduct" element={<NewProduct />} />
+              <Route path="/runadvert" element={<RunAdvert />} />
               <Route path="/categories" element={<CategoriesPage />} />
               <Route path="/categories/:categoryName" element={<CategoriesList />} />
               {/* Admin Routes */}
               <Route path="/admin" element={<AdminPage />} />
               <Route path="/admin/manage-users" element={<ManageUsers />} />
               <Route path="/admin/manage-vendors" element={<ManageVendors />} />
+              <Route path="admin/active-ads" element={<RunningAds />} />
               <Route path="/admin/pending-payments" element={<PendingPayments />} />
+              <Route path="/admin/ad-request" element={<AdRequest />} />
             </Route>
 
             {/* 404 page */}

@@ -85,7 +85,7 @@ const NewProduct = () => {
             <input type="number" name="price" value={product.price} onChange={handleChange} required className="w-full border rounded-lg p-2 mt-1" />
           </div>
           <div>
-            <label placeholder = "s" className="block text-sm font-medium">Category</label>
+            <label placeholder = "" className="block text-sm font-medium">Category</label>
             <select name="category" value={product.category} onChange={handleChange} className="w-full border rounded-lg p-2 mt-1">
               <option value="">Select a Category</option>
               <option value="electronics">Electronics</option>
@@ -93,6 +93,7 @@ const NewProduct = () => {
               <option value="home-appliances">Home Appliances</option>
               <option value="beauty">Beauty</option>
               <option value="kids">Kids</option>
+              <option value="apartments">Apartments</option>
               <option value="artisans">Artisans</option>
               <option value="talents">Talents</option>
               <option value="perfume">Perfume</option>

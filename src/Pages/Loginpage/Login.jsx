@@ -6,7 +6,7 @@ import { UserContext } from "../../UserContext";
 import "./login.css"
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(""); // this includes both email and phone number
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const { user, setUser } = useContext(UserContext);
@@ -33,6 +33,7 @@ const Login = () => {
         // getting the error message from the backend
         alert(err.response.data.message);
       } else {
+        setLoading(false)
         alert("Login failed: " + err.message);
       }
       console.log(e);

@@ -5,6 +5,7 @@ import { baseUrl } from "../../baseUrl";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FlutterWaveButton, closePaymentModal } from "flutterwave-react-v3";
+import { FaDollarSign } from "react-icons/fa";
 
 const Checkout = ({ fetchedProduct, vendorData }) => {
   const { user } = useContext(UserContext);
@@ -60,9 +61,10 @@ const Checkout = ({ fetchedProduct, vendorData }) => {
   };
 
   return (
-    <div>
+    <div className="w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3">
+      
+      <FaDollarSign size={20} />
       <FlutterWaveButton
-        className="w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3"
         {...fwConfig}
       />
     </div>

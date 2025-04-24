@@ -54,17 +54,17 @@ const PendingPayments = () => {
               <tr className="bg-gray-200">
                 <th className="border p-2">Customer Name</th>
                 <th className="border p-2">Vendor Name</th>
-                <th className="border p-2">Transaction Status</th>
+                <th className="border p-2">Transaction Amount</th>
                 <th className="border p-2">Transaction Date</th>
                 <th className="border p-2">Transaction Id</th>
               </tr>
             </thead>
             <tbody>
-              {transactions.map((transaction) => (
+              {transactions.slice().reverse().map((transaction) => (
                 <tr key={user.id} className="text-center">
                   <td className="border p-2">{transaction.userName}</td>
                   <td className="border p-2">{transaction.vendorName}</td>
-                  <td className="border p-2  text-customGreen">{transaction.status}</td>
+                  <td className="border p-2  text-customGreen">₦{transaction.amount}</td>
                   <td className="border p-2">{format(transaction.createdAt, "MMMM, d yyyy")}</td>
                   <td className="border p-2">{transaction.reference}</td>
                 </tr>

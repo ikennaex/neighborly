@@ -5,6 +5,7 @@ import axios from "axios";
 import { baseUrl } from "../../baseUrl";
 import { GrFormUpload } from "react-icons/gr";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { FcAdvertising } from "react-icons/fc";
 import Loader from "../../Loader/Loader"; // Import Loader component
 import UserTransactions from "../UserTransactions/UserTransactions";
 
@@ -71,16 +72,27 @@ const UserInfo = () => {
     <div className="container mx-auto">
       <div className="p-7">
         {user.role === "vendor" && (
+          <div>
           <div className="flex gap-7">
-          <Link className="flex items-center pb-4 gap-2" to="/newproduct">
+          <Link className="flex items-center pb-4 gap-1" to="/newproduct">
             <GrFormUpload className="text-customBlue" size={30} />
-            <p className="text-customBlue text-bold underline text-xl">Upload a new product</p>
+            <p className="text-customBlue text-bold underline lg:text-xl">Upload a new product</p>
           </Link>
 
-          <Link className="flex items-center pb-4 gap-2" to={`/orders/${user._id}`}>
+          <Link className="flex items-center pb-4 gap-1" to={`/orders/${user._id}`}>
             <MdOutlineFavoriteBorder className="text-customBlue" size={30} />
-            <p className="text-customBlue text-bold underline text-xl">View orders</p>
+            <p className="text-customBlue text-bold underline lg:text-xl">View orders</p>
           </Link>
+          </div>
+
+          <div className="flex justify-center items-center mb-4 gap-1 bg-customGreen p-3 rounded-xl ">
+          <p className="text-white">Need More Sales?</p>
+          <Link className="flex items-center gap-2" to={`/runadvert`}>
+            <FcAdvertising className="text-customBlue" size={30} />
+            <p className="text-white text-bold underline lg:text-xl">Run Sponsored Ads</p>
+          </Link>
+          </div>
+
           </div>
         )}
 
@@ -116,6 +128,7 @@ const UserInfo = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
             {fetchedProduct.map((product) => (
                 <div key={product._id} className="border p-4 rounded-lg shadow-md">
+                  
                 <img src={`${baseUrl}${product.imgUrl}`} alt={product.name} className="w-full h-40 object-cover mb-4 rounded" />
 
                 <div className="py-2">

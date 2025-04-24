@@ -24,7 +24,7 @@ const PrivacyPolicy = () => {
           <li>Email address</li>
           <li>Phone number</li>
           <li>Address</li>
-          <li>Payment details (handled via Paystack)</li>
+          <li>Payment details (handled via Flutterwave)</li>
         </ul>
 
         <p><strong>b. Non-Personal Information</strong></p>
@@ -54,7 +54,7 @@ const PrivacyPolicy = () => {
         <h2>3. Sharing Your Information</h2>
         <p>We do <strong>not</strong> sell your personal information. We may share data with:</p>
         <ul>
-          <li>Service providers (e.g., Paystack, hosting services)</li>
+          <li>Service providers (e.g., Flutterwave, hosting services)</li>
           <li>Legal authorities if required by law</li>
           <li>Other users as necessary (e.g., buyer-seller communication)</li>
         </ul>

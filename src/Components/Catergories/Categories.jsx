@@ -40,7 +40,7 @@ const Categories = () => {
         <div className="flex gap-3 overflow-x-scroll w-full whitespace-nowrap justify-center">
           {items.map((item, index) => (
             <div key={index} className="flex-shrink-0">
-              <Link to={`/categories/${items.dbName}`}>
+              <Link to={`/categories/${item.dbName}`}>
                 <div className="lg:w-52 w-24 lg:h-full h-28 bg-stone-200 rounded-xl py-7  flex flex-col justify-between items-center">
                   <img
                     className="lg:h-14 h-12 pb-2"

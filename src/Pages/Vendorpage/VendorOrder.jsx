@@ -28,21 +28,18 @@ const VendorOrder = () => {``
         <div className='flex flex-col justify-center items-center gap-4'>
           <h2 className='mb-4 font-bold text-2xl'>Your Recent Orders ({vendorOrders.length})</h2>
 
-          {vendorOrders.map((item) => {
+          {vendorOrders.slice().reverse().map((item) => {
             return (
-          <div className='flex bg-slate-200 p-5 rounded-xl lg:w-1/2 w-full justify-between'>
+          <div className='flex bg-slate-200 p-5 rounded-xl lg:w-1/2 w-full justify-between '>
             <div>
-              <img className='h-24 rounded-2xl' src={`${baseUrl}${item.product.imgUrl[0]}`} alt="" />
+              <img className='h-24 object-cover w-full rounded-2xl' src={`${baseUrl}${item.product.imgUrl[0]}`} alt="" />
             </div>
             <div>
               <h3 className='font-bold'>{item.product.name}</h3>
               <p> <span className='font-bold'>Purchased by:</span> {item.userName}</p>
               <p>{format(item.createdAt, "EEEE, MMMM d yyyy")}</p>
               <p><span className='font-bold'>Reference Id:</span> {item.reference}</p>
-            </div>
-
-            <div>
-              <p className='font-bold'>₦{item.product.price}</p>
+              <p className='font-bold'><span className='font-bold'>Price:</span> ₦{item.product.price}</p>
             </div>
           </div>
             )

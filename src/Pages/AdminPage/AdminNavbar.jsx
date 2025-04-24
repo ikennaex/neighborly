@@ -39,6 +39,16 @@ const AdminNavbar = () => {
                 <FaMoneyCheck size={20} />  Transactions
               </Link>
             </li>
+            <li>
+              <Link to="/admin/active-ads" className="flex items-center gap-3 hover:text-blue-400">
+                <FaMoneyCheck size={20} />  Active Ads
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/ad-request" className="flex items-center gap-3 hover:text-blue-400">
+                <FaMoneyCheck size={20} /> Ads Request
+              </Link>
+            </li>
           </ul>
         </div>
   

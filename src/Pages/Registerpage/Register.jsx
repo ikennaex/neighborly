@@ -9,6 +9,7 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("")
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
@@ -27,6 +28,7 @@ const Register = () => {
       await axios.post(`${baseUrl}register`, {
         username,
         email,
+        phoneNumber,
         password,
         firstName,
         lastName,
@@ -77,6 +79,14 @@ const Register = () => {
             className="h-14 border p-3 bg-slate-200 rounded-lg"
             type="text"
             placeholder="Enter Last Name"
+          />
+          <label htmlFor="">Phone Number:</label>
+          <input
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            className="h-14 border p-3 bg-slate-200 rounded-lg"
+            type="tel"
+            placeholder="Enter Phone Number"
           />
           <label htmlFor="">Set Username</label>
           <input

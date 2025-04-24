@@ -22,6 +22,7 @@ import jewellery from "./assets/jewellery.png";
 import tailor from "./assets/tailor.png";
 import talents from "./assets/talents.png";
 import thrift from "./assets/thrift.png";
+import apartment from "./assets/apartment.png";
 
 export {
   fridge,
@@ -48,4 +49,5 @@ export {
   tailor,
   talents,
   thrift,
+  apartment
 };
