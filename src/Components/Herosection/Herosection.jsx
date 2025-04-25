@@ -32,8 +32,10 @@ const Herosection = () => {
     return () => clearInterval(interval); // Cleanup the interval on component unmount
   }, [ads.length]);
 
+  // only display active ads 
+  const activeAds = ads.filter(ad => ad.active === true);
   // Get the current ad based on the index
-  const currentAd = ads[currentAdIndex];
+  const currentAd = activeAds[currentAdIndex];
 
   return (
     <div className="pb-7">

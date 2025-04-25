@@ -21,7 +21,6 @@ const RunningAds = () => {
       }, [])
 
       const activeAds = adDetails.filter((data) => data.active === true)
-      console.log(activeAds)
 
 
   return (
