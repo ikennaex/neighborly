@@ -12,6 +12,7 @@ const Checkout = ({ fetchedProduct, vendorData }) => {
   const userName = user.firstName + " " + user.lastName;
   const vendorId = vendorData._id;
   const vendorName = vendorData.businessName;
+  const vendorEmail = vendorData.email;
   const navigate = useNavigate();
 
   // Flutterwave Payment
@@ -49,6 +50,7 @@ const Checkout = ({ fetchedProduct, vendorData }) => {
           vendorName,
           userName,
           fetchedProduct,
+          vendorEmail
         })
         .then(() => {
           if (response.status === "completed") {

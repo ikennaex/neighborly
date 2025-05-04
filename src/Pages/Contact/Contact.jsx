@@ -1,25 +1,23 @@
 import React from 'react'
 
-const AboutUsPage = () => {
+const Contact = () => {
   return (
-    <div className='container'>
-      <div className='mx-auto lg:px-72 px-5 py-5'>
-        <h2 className='text-customBlue font-bold text-2xl lg:pb-7 pb-4'>About us</h2>
+    <div className=''>
+        <div className='mx-auto py-7 lg:px-20 px-5'>
+            <h2 className='text-2xl font-bold text-customBlue text-center mb-7'>☎️ Contact Us</h2>
 
-        <p>
-        Neighborly enterprise is a friendly online community market set to ease your shopping experience, we are determined to provide you with the best deals within your neighborhood
-        </p> <br />
-
-        <ul>
+            <p>
+            <ul>
           <li><strong>Email:</strong> <a href="mailto:neighborly2025@gmail.com">neighborly2025@gmail.com</a></li>
           <li><strong>Phone: </strong>09116241758, 08069114190 <br/></li>
           <li><strong>Address: </strong> 4 LADEGA STREET CHEVY VIEW ESTATE CHEVRON DRIVE, LEKKI, LAGOS STATE <br/></li>
           
           {/* <li><strong>Website:</strong> <a href="https://neighborly.ng" target="_blank" rel="noopener noreferrer">https://neighborly.ng</a></li> */}
         </ul>
-      </div>
+            </p>
+        </div>
     </div>
   )
 }
 
-export default AboutUsPage
+export default Contact

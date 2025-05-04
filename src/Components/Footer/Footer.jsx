@@ -15,7 +15,15 @@ const Footer = () => {
         <Link to={"/privacypolicy"} >
         <p>Privacy Policy</p>
         </Link>
+        <Link to={"/termsandcondition"} >
         <p>Terms and condition</p>
+        </Link>
+        <Link to={"/refundpolicy"} >
+        <p>Refund Policy</p>
+        </Link>
+        <Link to={"/contactus"} >
+        <p>Contact Us</p>
+        </Link>
         </div>
       </div>
 

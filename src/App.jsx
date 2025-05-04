@@ -31,6 +31,9 @@ import CategoriesList from './Pages/CategoriesPage/CategoriesList'
 import AdRequest from './Pages/AdminPage/AdRequest'
 import RunAdvert from './Pages/Vendorpage/RunAdvert'
 import RunningAds from './Pages/AdminPage/RunningAds'
+import Terms from './Pages/Terms&Condition/Terms'
+import RefundPolicy from './Pages/RefundPolicy/RefundPolicy'
+import Contact from './Pages/Contact/Contact'
 
 axios.defaults.withCredentials = true;
 
@@ -52,6 +55,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+            <Route path="/termsandcondition" element={<Terms />} />
+            <Route path="/refundpolicy" element={<RefundPolicy />} />
+            <Route path="/contactus" element={<Contact />} />
             {/* <Route path="/termsandcondition" element={<PrivacyPolicy />} /> */}
 
             {/* Protected routes */}

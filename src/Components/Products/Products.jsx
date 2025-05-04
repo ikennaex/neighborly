@@ -5,8 +5,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../baseUrl";
 
-
-
 const Products = ({ search }) => {
   const [fetchedProducts, setFetchedProducts] = useState([]);
   const [error, setError] = useState(null);

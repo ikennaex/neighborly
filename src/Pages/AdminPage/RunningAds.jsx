@@ -31,7 +31,7 @@ const RunningAds = () => {
         <p>Active ({activeAds.length})</p>
 
                   <div className='flex flex-col gap-5 mb-5'>
-                {activeAds.map((data) => {
+                {activeAds.slice().reverse().map((data) => {
                   return (
                 <div className='bg-stone-200 justify-around flex w-full p-4 rounded-lg items-center gap-20'>
                     <div className='flex gap-5'>
