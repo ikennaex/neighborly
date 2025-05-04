@@ -28,7 +28,7 @@ const Footer = () => {
       </div>
 
       <p className='text-center py-4'>
-        &copy; {date} Neighborly.com
+        &copy; {date} Neighborly.ng
       </p>
     </div>
   )
