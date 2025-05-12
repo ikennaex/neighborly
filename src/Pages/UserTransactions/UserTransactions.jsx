@@ -31,7 +31,7 @@ const UserTransactions = () => {
                 <div className="bg-blue-100 mb-3 flex  justify-between p-3 rounded-md lg:w-1/2">
                 <div>
                   <p className='font-bold text-xl text-customBlue'>{item.product ? item.product.name: "not defined"}</p>
-                  <p className='text-smc'>{format(item.createdAt, "EEEE, MMMM d yyyy")}</p>
+                  <p className='text-smc'>{format(item.createdAt, "EEEE, MMMM d yyyy, h:mm a")}</p>
                   <p><span className='text-customGreen font-bold'>paid to </span>{item.vendorName}</p>
                 </div>
     

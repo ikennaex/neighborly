@@ -37,7 +37,7 @@ const VendorOrder = () => {``
             <div>
               <h3 className='font-bold'>{item.product.name}</h3>
               <p> <span className='font-bold'>Purchased by:</span> {item.userName}</p>
-              <p>{format(item.createdAt, "EEEE, MMMM d yyyy")}</p>
+              <p>{format(item.createdAt, "EEEE, MMMM d yyyy, h:mm a")}</p>
               <p><span className='font-bold'>Reference Id:</span> {item.reference}</p>
               <p className='font-bold'><span className='font-bold'>Price:</span> ₦{item.product.price}</p>
             </div>

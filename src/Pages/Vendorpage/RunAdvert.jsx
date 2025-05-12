@@ -4,7 +4,7 @@ import Loader from "../../Loader/Loader"; // Import Loader component
 import { baseUrl } from '../../baseUrl';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
-import { FlutterWaveButton, closePaymentModal } from "flutterwave-react-v3";
+import PaystackPop from '@paystack/inline-js'
 
 const weeklyAd = import.meta.env.VITE_WEEKLY_AD
 const monthlyAd = import.meta.env.VITE_MONTHLY_AD
@@ -17,6 +17,7 @@ const RunAdvert = () => {
     const userName = user.firstName + " " + user.lastName;
     const vendorId = user._id;
     const vendorName = user.businessName;
+    const vendorEmail = user.email;
     const navigate = useNavigate();
 
       const [product, setProduct] = useState({
@@ -44,106 +45,7 @@ const RunAdvert = () => {
     }
   };
 
-
-  // handle payment 
-    // Flutterwave Payment
-  
-    const config = {
-      public_key: "FLWPUBK_TEST-75fc0559e51d8343f858be2da3ae0403-X",
-      tx_ref: Date.now(),
-      amount: product.duration === "weekly" ? weeklyAd : monthlyAd,
-      currency: "NGN",
-      payment_options: "card,mobilemoney,ussd",
-      customer: {
-        email: user.email,
-        phone_number: user.phoneNumber,
-        name: userName,
-      },
-      customizations: {
-        title: "Neighborly",
-        description: "Payment for Ads",
-        logo: "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
-      },
-    };
-  
-    // const fwConfig = {
-    //   ...config,
-    //   text: "Pay with Flutterwave!",
-    //   callback: (response) => {
-    //     console.log(response);
-    //     closePaymentModal(); // Close the Flutterwave modal
-    
-    //     if (response.status === "completed") {
-    //       const transaction_id = response.transaction_id;
-    
-    //       axios
-    //         .post(`${baseUrl}verify-payment`, {
-    //           transaction_id,
-    //           vendorId,
-    //           vendorName,
-    //           userName,
-    //           fetchedProduct: "Ads",
-    //         })
-    //         .then(() => {
-    //           try {
-    //             handleSubmit(); // Only called after successful payment & verification
-    //             navigate(`/user/${user._id}`);
-    //           } catch (err) {
-    //             console.error("Submission failed:", err);
-    //           }
-    //         })
-    //         .catch((err) => {
-    //           console.error("Payment verification failed:", err);
-    //           alert("Payment verification failed. Please contact support.");
-    //         });
-    //     } else {
-    //       alert("Payment not completed. Please try again.");
-    //     }
-    //   },
-    //   onClose: () => {
-    //     console.log("Payment modal closed without completing transaction.");
-    //   },
-    // };
-
-    // const handleSubmit = async (e) => {
-    //   e.preventDefault()
-  
-    //   setLoading(true); // Start loading
-      
-    //   const formData = new FormData();
-    //   formData.append("name", product.name);
-    //   formData.append("vendorName", vendorName);
-    //   formData.append("desc", product.desc);
-    //   formData.append("link", product.link);
-    //   formData.append("price", product.price.toString().trim());
-    //   formData.append("img", product.img);
-    //   formData.append("duration", product.duration);
-    //   formData.append("location", product.location);
-  
-    //   try {
-    //     const response = await axios.post(`${baseUrl}runadvert`, formData, {
-    //       headers: { "Content-Type": "multipart/form-data" },
-    //     });
-  
-    //     setProduct({
-    //       name: "",
-    //       desc: "",
-    //       link: "",
-    //       price: "",
-    //       img: null,
-    //       duration: "",
-    //       location: "",
-    //     });
-    //     setPreview(null);
-    //   } catch (err) {
-    //     console.log(err)
-    //     alert("Failed to upload product");
-    //   } finally {
-    //     setLoading(false); // Stop loading
-    //   }
-    // }
-
-    const submitAd = async () => {
+    const submitAd = async (reference) => {
       setLoading(true);
     
       const formData = new FormData();
@@ -155,6 +57,7 @@ const RunAdvert = () => {
       formData.append("img", product.img);
       formData.append("duration", product.duration);
       formData.append("location", product.location);
+      formData.append("reference", reference);
     
       try {
         const response = await axios.post(`${baseUrl}runadvert`, formData, {
@@ -171,7 +74,7 @@ const RunAdvert = () => {
           location: "",
         });
         setPreview(null);
-        return true; // Indicate success
+        navigate(`/user/${user._id}`);
       } catch (err) {
         console.log(err);
         alert("Failed to upload product");
@@ -180,49 +83,40 @@ const RunAdvert = () => {
         setLoading(false);
       }
     };
+
+      // handle payment 
+    // Paystack Payment
+
+    const handlePayment = () => {
+      const paystack = new PaystackPop()
+        paystack.newTransaction ({
+            key: "pk_test_0b965ae7b32a7c3427f7538791f4a60d22d76759",
+            amount: product.duration === "weekly" ? weeklyAd*100 : monthlyAd*100,
+            email: user.email,
+            firstname: user.firstName  || "John",
+            lastname: user.lastName || "Doe",
+            onSuccess(transaction) {
+              submitAd(transaction.reference)
+    
+          },
+          onCancel() {
+            setLoading(false)
+              alert("Payment Cancelled")
+          }
+        })
+    }
     
     // Form submission handler
     const handleSubmit = (e) => {
       e.preventDefault();
+
+      handlePayment()
     
-      // Start payment flow
-      window.FlutterwaveCheckout(fwConfig); // Trigger payment modal
     };
 
-    const fwConfig = {
-      ...config,
-      text: "Pay with Flutterwave!",
-      callback: async (response) => {
-        console.log(response);
-        closePaymentModal();
-    
-        if (response.status === "completed") {
-          const transaction_id = response.transaction_id;
-    
-          try {
-            // await axios.post(`${baseUrl}verify-payment`, {
-            //   transaction_id,
-            //   vendorId,
-            //   vendorName,
-            //   userName,
-            //   fetchedProduct: "Ads",
-            // });
-    
-            const result = await submitAd(); // Only submit if payment succeeded
-            if (result) navigate(`/user/${user._id}`);
-          } catch (err) {
-            console.error("Payment verification or ad submission failed:", err);
-            alert("Something went wrong. Please try again.");
-          }
-        } else {
-          alert("Payment not completed. Please try again.");
-        }
-      },
-      onClose: () => {
-        console.log("Payment modal closed without completing transaction.");
-      },
-    };
-  
+
+
+
   return (
     <div className='container'>
         {loading ? <Loader /> :
@@ -277,9 +171,7 @@ const RunAdvert = () => {
             </div>
 
         <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
-                <FlutterWaveButton
-                  {...fwConfig}
-                />
+          Pay with Paystack
         </button>
 
         </form>
@@ -290,3 +182,59 @@ const RunAdvert = () => {
 }
 
 export default RunAdvert
+
+
+
+// const config = {
+//   public_key: "FLWPUBK_TEST-75fc0559e51d8343f858be2da3ae0403-X",
+//   tx_ref: Date.now(),
+//   amount: product.duration === "weekly" ? weeklyAd : monthlyAd,
+//   currency: "NGN",
+//   payment_options: "card,mobilemoney,ussd",
+//   customer: {
+//     email: user.email,
+//     phone_number: user.phoneNumber,
+//     name: userName,
+//   },
+//   customizations: {
+//     title: "Neighborly",
+//     description: "Payment for Ads",
+//     logo: "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
+//   },
+// };
+
+
+// const fwConfig = {
+//   ...config,
+//   text: "Pay with Flutterwave!",
+//   callback: async (response) => {
+//     console.log(response);
+//     closePaymentModal();
+
+//     if (response.status === "completed") {
+//       const transaction_id = response.transaction_id;
+
+//       try {
+//         // await axios.post(`${baseUrl}verify-payment`, {
+//         //   transaction_id,
+//         //   vendorId,
+//         //   vendorName,
+//         //   userName,
+//         //   fetchedProduct: "Ads",
+//         // });
+
+//         const result = await submitAd(); // Only submit if payment succeeded
+//         if (result) navigate(`/user/${user._id}`);
+//       } catch (err) {
+//         console.error("Payment verification or ad submission failed:", err);
+//         alert("Something went wrong. Please try again.");
+//       }
+//     } else {
+//       alert("Payment not completed. Please try again.");
+//     }
+//   },
+//   onClose: () => {
+//     console.log("Payment modal closed without completing transaction.");
+//   },
+// };
+

@@ -14,6 +14,7 @@ const Products = ({ search }) => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(`${baseUrl}allproducts`); // API endpoint
+        console.log(response)
         setFetchedProducts(response.data);
       } catch (err) {
         setError("Failed to fetch products");

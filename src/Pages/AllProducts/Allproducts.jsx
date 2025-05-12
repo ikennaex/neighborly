@@ -30,14 +30,17 @@ const Allproducts = () => {
           <p>Shop best deals only on Neighborly</p>
         </div>
 
-        <div className="flex items-center my-4">
+
+        {/* // removed will be included in an update  */}
+        
+        {/* <div className="flex items-center my-4 ">
           <p className="font-bold">Filter by :</p>
           <select id="filterDropdown" className="border p-2 rounded ml-2">
             <option value="all">All</option>
             <option value="fruits">Categories</option>
             <option value="vegetables">Location</option>
           </select>
-        </div>
+        </div> */}
         
         {fetchedProducts.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

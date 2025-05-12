@@ -1,11 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import AdminNavbar from './AdminNavbar'
 import axios from 'axios'
 import { baseUrl } from '../../baseUrl'
 import { format } from 'date-fns'
+import { UserContext } from '../../UserContext'
+import { useNavigate } from 'react-router-dom'
+import Loader2 from '../../Loader/Loader2'
 
 const RunningAds = () => {
       const [adDetails, setAdDetails] = useState([])
+      const [loading, setLoading] = useState(null)
+
+        const { user } = useContext(UserContext);
+        const navigate = useNavigate(); 
+      
+        useEffect(() => {
+          if (user.role !== "admin") {
+            navigate("/"); // Redirect to home if not an admin
+          }
+        }, [user, navigate]); // Only re-run when user or navigate changes
     
       useEffect(() => {
         const getAdRequest = async () => {
@@ -18,7 +31,22 @@ const RunningAds = () => {
         }
     
         getAdRequest()
-      }, [])
+      }, [adDetails])
+
+      const endAd = async (e, adId ) => {
+        e.preventDefault()
+        setLoading(adId)
+        try {
+          console.log(adId)
+          const response = await axios.put(`${baseUrl}runadvert`, {adId, status: false})
+          alert(`${adId} Ad ended`)
+        } catch (err) {
+          console.log(err)
+          alert("Failed to stop ad");
+        } finally {
+          setLoading(null)
+        }
+      }
 
       const activeAds = adDetails.filter((data) => data.active === true)
 
@@ -50,7 +78,7 @@ const RunningAds = () => {
                     </div>
         
                     <div>
-                        <button className='bg-red-700 text-white p-2 rounded-md'>End ad</button>
+                        <button onClick={(e) => endAd(e, data._id)} className={`bg-red-700 text-white p-2 rounded-md ${loading === data._id ? "opacity-50 cursor-not-allowed" : ""}`} >{loading === data._id? <Loader2 /> : "End ad"}</button>
                     </div>
                 </div>
                 )})}
