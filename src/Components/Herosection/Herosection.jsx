@@ -62,7 +62,7 @@ const Herosection = () => {
         <div className="">
           <img
             className={currentAd ? `lg:h-96 h-72 w-fit object-cover pr-4` :`h-80 lg:h-[29rem] w-fit object-cover ` }
-            src={currentAd ? `${baseUrl}${currentAd.img}` : fridge} // Fallback to fridge image if no ad
+            src={currentAd ? `${currentAd.img}` : fridge} // Fallback to fridge image if no ad
             alt={currentAd ? currentAd.name : 'Product image'}
           />
         </div>

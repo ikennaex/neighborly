@@ -64,7 +64,7 @@ const ProductPage = () => {
         
         {/* Product Image */}
         <div className="w-full md:w-1/2">
-          <img src={`${baseUrl}${fetchedProduct.imgUrl[0]}`} 
+          <img src={`${fetchedProduct.imgUrl[0]}`} 
                alt={fetchedProduct.name} 
                className="w-full max-w-full object-cover rounded-lg shadow-lg" />
           {/* <div className='flex gap-2 mt-4'>

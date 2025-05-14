@@ -32,7 +32,7 @@ const VendorOrder = () => {``
             return (
           <div className='flex bg-slate-200 p-5 rounded-xl lg:w-1/2 w-full justify-between '>
             <div>
-              <img className='h-24 object-cover w-full rounded-2xl' src={`${baseUrl}${item.product.imgUrl[0]}`} alt="" />
+              <img className='h-24 object-cover w-full rounded-2xl' src={`${item.product.imgUrl[0]}`} alt="" />
             </div>
             <div>
               <h3 className='font-bold'>{item.product.name}</h3>

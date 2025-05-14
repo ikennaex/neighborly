@@ -14,7 +14,6 @@ const Products = ({ search }) => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(`${baseUrl}allproducts`); // API endpoint
-        console.log(response)
         setFetchedProducts(response.data);
       } catch (err) {
         setError("Failed to fetch products");
@@ -24,7 +23,7 @@ const Products = ({ search }) => {
     fetchProducts();
   }, []);
 
-  const filteredProducts = fetchedProducts?.filter(
+  const filteredProducts = fetchedProducts?.slice().reverse().filter(
     (product) =>
       product.name.toLowerCase().includes(search.toLowerCase()) ||
       product.desc.toLowerCase().includes(search.toLowerCase()) ||
@@ -47,7 +46,7 @@ const Products = ({ search }) => {
                   <div className="object-cover w-full">
                     <img
                       className="h-48 w-full object-contain rounded-lg"
-                      src={`${baseUrl}${product.imgUrl}`}
+                      src={`${product.imgUrl}`}
                       alt={product.name}
                     />
                   </div>
@@ -62,7 +61,7 @@ const Products = ({ search }) => {
           </div>
         ) : (
           <div className="flex justify-center items-center min-h-[50vh]">
-            <Loader />
+            <Loader /> 
           </div>
         )}
 

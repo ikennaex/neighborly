@@ -36,7 +36,7 @@ const CategoriesList = () => {
                     <div className="object-cover w-full">
                       <img
                         className="h-48 w-full object-contain rounded-lg"
-                        src={`${baseUrl}${product.imgUrl}`}
+                        src={`${product.imgUrl}`}
                         alt={product.name}
                       />
                     </div>

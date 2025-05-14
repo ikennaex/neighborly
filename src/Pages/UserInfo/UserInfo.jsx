@@ -129,7 +129,7 @@ const UserInfo = () => {
             {fetchedProduct.map((product) => (
                 <div key={product._id} className="border p-4 rounded-lg shadow-md">
                   
-                <img src={`${baseUrl}${product.imgUrl}`} alt={product.name} className="w-full h-40 object-cover mb-4 rounded" />
+                <img src={`${product.imgUrl}`} alt={product.name} className="w-full h-40 object-cover mb-4 rounded" />
 
                 <div className="py-2">
                   <h2 className="text-xl font-semibold">{product.name}</h2>

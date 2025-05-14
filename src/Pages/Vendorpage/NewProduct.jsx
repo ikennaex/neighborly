@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { baseUrl } from "../../baseUrl";
 import Loader from "../../Loader/Loader"; // Import Loader component
+import { useNavigate } from "react-router-dom";
 
 const NewProduct = () => {
   const [product, setProduct] = useState({
@@ -12,10 +13,11 @@ const NewProduct = () => {
     category: "", // Default category
     location: "",
   });
-
+  
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false); // Loader state
-
+  const navigate = useNavigate();
+  
   // Handle Input Changes
   const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
@@ -57,6 +59,7 @@ const NewProduct = () => {
         location: "",
       });
       setPreview(null);
+      navigate("/")
     } catch (err) {
       console.log(err);
       alert("Failed to upload product");

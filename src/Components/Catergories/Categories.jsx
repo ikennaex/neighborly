@@ -7,7 +7,7 @@ const Categories = () => {
     {
       text: "Phones & Tablet",
       img: phone,
-      dbName: "phones-&-tablet",
+      dbName: "phones-&-tablets",
     },
     {
       text: "Home appliances",

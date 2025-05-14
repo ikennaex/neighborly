@@ -59,12 +59,12 @@ const AdRequest = () => {
 
           <p>Pending Ad Requests ({pendingAds.length})</p>
           <div className='flex flex-col gap-5 mb-5'>
-        {pendingAds.map((data) => {
+        {pendingAds.slice().reverse().map((data) => {
           return (
         <div className='bg-stone-200 justify-around flex w-full p-4 rounded-lg items-center gap-20'>
             <div className='flex gap-5'>
             <div className="">
-                <img className='h-32 w-full' src= {`${baseUrl + data.img}`} alt="" />
+                <img className='h-32 w-full' src= {`${data.img}`} alt="" />
             </div>
 
             <div>
