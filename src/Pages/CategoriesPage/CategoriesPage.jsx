@@ -1,5 +1,5 @@
 import React from 'react'
-import { adult, apartment, aphrodisiac, artisan, bear, buildingmaterial, car, driver, electronics, fashion, health, hospitality, jewellery, logistics, makeup, microwave, perfume, phone, realestate, skincare, tailor, talents, thrift } from '../../imports'
+import { adult, apartment, aphrodisiac, artisan, bear, buildingmaterial, car, cream, driver, electronics, fashion, food, health, hospitality, jewellery, logistics, makeup, microwave, perfume, phone, realestate, skincare, stylist, tailor, talents, thrift } from '../../imports'
 import { Link } from 'react-router-dom'
 
 const CategoriesPage = () => {
@@ -120,10 +120,25 @@ const CategoriesPage = () => {
                 dbName: "makeup-artist"
             },
             {
-                text: "Fashion Designers",
+                text: "Fashion",
                 img: fashion,
-                dbName: "fashion-designers"
-            }
+                dbName: "fashion"
+            },
+            {
+                text: "Food and Pastries",
+                img: food,
+                dbName: "food-&-pastries"
+            },
+            {
+                text: "Skincare",
+                img: cream,
+                dbName: "skincare"
+            },
+            {
+                text: "Stylist",
+                img: stylist,
+                dbName: "stylist"
+            },
         ]
 
   return (

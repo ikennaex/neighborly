@@ -20,7 +20,7 @@ const VendorOrder = () => {``
     }
 
     fetchVendorOrders()
-  }, [])
+  }, [vendorOrders])
 
   return (
     <div className='container'>

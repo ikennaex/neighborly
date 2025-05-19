@@ -78,7 +78,7 @@ const ProductPage = () => {
         <div className="w-full md:w-1/2">
           <h1 className="text-2xl font-bold">{fetchedProduct.name}</h1>
           <p className="text-lg font-semibold text-gray-700">₦{fetchedProduct.price}</p>
-          <p className="text-sm text-gray-500">{fetchedProduct.location}</p>
+          <p className="lg:text-md text-sm text-gray-500">{fetchedProduct.location}</p>
           <p>category: <span className='text-customBlue'>{fetchedProduct.category}</span></p>
           <div className="h-0.5 bg-customGreen my-4"></div>
           <p className="text-gray-700">{fetchedProduct.desc}</p>

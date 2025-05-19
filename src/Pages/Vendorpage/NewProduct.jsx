@@ -113,7 +113,10 @@ const NewProduct = () => {
               <option value="thrift-wears">Thrift Wears</option>
               <option value="tailor">Tailor</option>
               <option value="makeup-artist">Makeup Artist</option>
-              <option value="fashion-designers">Fashion Designers</option>
+              <option value="fashion">Fashion</option>
+              <option value="food-&-pastries">Food and Pastries</option>
+              <option value="skincare">Skincare</option>
+              <option value="stylist">Stylist</option>
             </select>
           </div>
           <div>

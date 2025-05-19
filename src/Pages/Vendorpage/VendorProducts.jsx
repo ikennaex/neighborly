@@ -101,8 +101,9 @@ const VendorProducts = () => {
                         <h2 className="mt-6 text-xl font-bold">Vendor Products</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                             {fetchedProduct.map((product) => (
+                                <Link to={`/products/${product._id}`} >
                                 <div key={product._id} className="border p-4 rounded-lg shadow-md">
-                                    <img src={`${baseUrl}${product.imgUrl[0]}`} alt={product.name} className="w-full h-50 object-cover mb-4 rounded" />
+                                    <img src={`${product.imgUrl[0]}`} alt={product.name} className="w-full h-50 object-cover mb-4 rounded" />
 
                                     <div className='py-2'>
                                         <h2 className='text-xl font-semibold'>{product.name}</h2>
@@ -142,6 +143,7 @@ const VendorProducts = () => {
                                         )}
                                     </div>
                                 </div>
+                                </Link>
                             ))}
                         </div>
                     </>

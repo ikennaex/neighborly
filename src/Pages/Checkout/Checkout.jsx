@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { FaDollarSign } from "react-icons/fa";
 import PaystackPop from '@paystack/inline-js'
 import Loader2 from "../../Loader/Loader2";
+import { TbCurrencyNaira } from "react-icons/tb";
+
 
 const Checkout = ({ fetchedProduct, vendorData }) => {
   const { user } = useContext(UserContext);
@@ -48,7 +50,7 @@ const Checkout = ({ fetchedProduct, vendorData }) => {
     <div onClick={handlePayment} className="w-full h-12 rounded-xl text-white bg-customBlue flex items-center justify-center gap-3 cursor-pointer">
       {!loading ? 
       <>
-      <FaDollarSign size={20} />
+      <TbCurrencyNaira size={25} />
       Pay with Paystack 
       </>
       : 

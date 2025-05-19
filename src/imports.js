@@ -23,6 +23,9 @@ import tailor from "./assets/tailor.png";
 import talents from "./assets/talents.png";
 import thrift from "./assets/thrift.png";
 import apartment from "./assets/apartment.png";
+import cream from "./assets/cream.png";
+import food from "./assets/food.png";
+import stylist from "./assets/stylist.png";
 
 export {
   fridge,
@@ -49,5 +52,8 @@ export {
   tailor,
   talents,
   thrift,
-  apartment
+  apartment,
+  cream,
+  food,
+  stylist
 };

@@ -67,7 +67,7 @@ const ManageVendors = () => {
                   <th className="border p-2">email</th>
                   <th className="border p-2">Username</th>
                   <th className="border p-2">Vendor Status</th>
-                  <th className="border p-2">Actions</th>
+                  <th className="border p-2">Phone Numbers</th>
                 </tr>
               </thead>
               <tbody>
@@ -84,12 +84,7 @@ const ManageVendors = () => {
                     )}
                     </td>
                     <td className="border p-2">
-                      <button
-                        onClick={() => handleDelete(user.id)}
-                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded"
-                      >
-                        Delete
-                      </button>
+                      {user.phoneNumber}
                     </td>
                   </tr>
                 ))}

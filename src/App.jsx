@@ -34,6 +34,8 @@ import RunningAds from './Pages/AdminPage/RunningAds'
 import Terms from './Pages/Terms&Condition/Terms'
 import RefundPolicy from './Pages/RefundPolicy/RefundPolicy'
 import Contact from './Pages/Contact/Contact'
+import InfoButton from './Components/InfoButton/InfoButton'
+import CookieConsent from './Components/Cookieconsent/CookieConsent'
 
 axios.defaults.withCredentials = true;
 
@@ -90,6 +92,8 @@ function App() {
 
         {/* Footer stays at bottom */}
         <Footer />
+        <InfoButton />
+        <CookieConsent />
       </div>
     </UserContextProvider>
   )

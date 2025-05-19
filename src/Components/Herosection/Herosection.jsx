@@ -14,7 +14,7 @@ const Herosection = () => {
     const fetchAds = async () => {
       try {
         const response = await axios.get(`${baseUrl}runadvert`);
-        setAds(response.data); // Assuming the response contains the ads array
+        setAds(response.data); // if the response contains the ads array
       } catch (error) {
         console.error("Error fetching ads:", error);
       }

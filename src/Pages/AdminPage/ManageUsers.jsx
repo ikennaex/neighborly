@@ -24,7 +24,6 @@ const ManageUsers = () => {
       try {
         const response = await axios.get(`${baseUrl}users`, { withCredentials: true }); 
         setFetchedUsers(response.data);
-        console.log("Fetched Users:", response.data);
       } catch (err) {
         if (err.response && err.response.status === 403) { // getting the error message from the backend
           alert(err.response.data.message)
@@ -67,7 +66,8 @@ const ManageUsers = () => {
                 <th className="border p-2">Last Name</th>
                 <th className="border p-2">Username</th>
                 <th className="border p-2">Vendor Status</th>
-                <th className="border p-2">Actions</th>
+                <th className="border p-2">Phone Number</th>
+                <th className="border p-2">Email address</th>
               </tr>
             </thead>
             <tbody>
@@ -78,19 +78,21 @@ const ManageUsers = () => {
                   <td className="border p-2">{user.username}</td>
                   <td className="border p-2">
                   {user.role === 'vendor' ? (
-                      <span className="text-green-500 font-semibold">Vendor</span>
-                    ) : (
-                      <span className="text-red-500 font-semibold">User</span>
-                    )}
+                    <span className="text-green-500 font-semibold">Vendor</span>
+                  ) : (
+                    <span className="text-red-500 font-semibold">User</span>
+                  )}
                   </td>
                   <td className="border p-2">
-                    <button
+                    {/* <button
                       onClick={() => handleDelete(user.id)}
                       className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded"
-                    >
+                      >
                       Delete
-                    </button>
+                      </button> */}
+                    {user.phoneNumber}
                   </td>
+                  <td className="border p-2">{user.email}</td>
                 </tr>
               ))}
             </tbody>
