@@ -12,7 +12,7 @@ const AboutUsPage = () => {
 
         <ul>
           <li><strong>Email:</strong> <a href="mailto:neighborly2025@gmail.com">support@neighborly.ng</a></li>
-          <li><strong>Phone: </strong>08069114190 <br/></li>
+          <li><strong>Phone: </strong>09116241758 <br/></li>
           <li><strong>Address: </strong> 4 LADEGA STREET CHEVY VIEW ESTATE CHEVRON DRIVE, LEKKI, LAGOS STATE <br/></li>
           
           {/* <li><strong>Website:</strong> <a href="https://neighborly.ng" target="_blank" rel="noopener noreferrer">https://neighborly.ng</a></li> */}

@@ -63,7 +63,7 @@ const Terms = () => {
   <p>
     <strong>Neighborly Support</strong><br/> <br />
     <strong>Email: </strong>support@neighborly.ng<br/>
-    <strong>Phone: </strong>08069114190 <br/>
+    <strong>Phone: </strong>09116241758 <br/>
     <strong>Address: </strong> 4 LADEGA STREET CHEVY VIEW ESTATE CHEVRON DRIVE, LEKKI, LAGOS STATE <br/>
   </p>
   </div>
