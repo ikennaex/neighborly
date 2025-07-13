@@ -90,7 +90,7 @@ const RunAdvert = () => {
     const handlePayment = () => {
       const paystack = new PaystackPop()
         paystack.newTransaction ({
-            key: "pk_test_0b965ae7b32a7c3427f7538791f4a60d22d76759",
+            key: "pk_live_9baae4fd8eb89d362e310e5978a0918e40f66b62",
             amount: product.duration === "weekly" ? weeklyAd*100 : monthlyAd*100,
             email: user.email,
             firstname: user.firstName  || "John",

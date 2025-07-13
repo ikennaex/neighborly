@@ -34,12 +34,15 @@ const ProductPage = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
+      setLoading(true)
         try {
             const response = await axios.get(`${baseUrl}vendor/${fetchedProduct.vendor}`);
             setVendorData(response.data);
             // loadedVendorData=response.data
         } catch (err) {
             setError("Failed to fetch vendor details");
+        } finally {
+          setLoading(false)
         }
     };
     if (fetchedProduct.vendor) {
